@@ -5,25 +5,25 @@
 body {
   /* 设置el-menu组件背景色/间距 */
   --el-menu-bg-color: transparent;
-  --el-menu-base-level-padding: var(--el-space);
-  --el-menu-level-padding: var(--el-space-sm);
+  --el-menu-base-level-padding: var(--el-spacing);
+  --el-menu-level-padding: var(--el-spacing-sm);
 }
 
 /* 使element按钮能够根据component-size的值来变更大小 */
 .el-button {
   --el-button-size: var(--el-component-size);
   height: var(--el-button-size);
-  padding: 0 var(--el-space-sm);
+  padding: 0 var(--el-spacing-sm);
 }
 
 .el-button--small {
   --el-button-size: var(--el-component-size-small);
-  padding: 0 var(--el-space-xs);
+  padding: 0 var(--el-spacing-xs);
 }
 
 .el-button--large {
   --el-button-size: var(--el-component-size-large);
-  padding: 0 var(--el-space);
+  padding: 0 var(--el-spacing);
 }
 
 .el-dialog {
@@ -32,7 +32,7 @@ body {
 
 /* el-dialog内边距关联到space-md */
 .el-dialog .el-dialog__body {
-  padding: var(--el-space-md);
+  padding: var(--el-spacing-md);
 }
 
 /* el-collapse标题颜色关联到text-color-primary */

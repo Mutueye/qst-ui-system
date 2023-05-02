@@ -55,13 +55,13 @@ export const cssVarCodex = {
   // border radius 在 element-plus 定义的变量之外，新增了'large'和'huge'值
   [ThemeCategory.BorderRadius]: ['small', 'base', 'large', 'huge', 'round', 'circle'],
   // [ThemeCategory.BoxShadow]: ['DEFAULT', 'light', 'lighter', 'dark'],
-  // space不是element-plus原有变量，例--el-space-sm
+  // spacing不是element-plus原有变量，例--el-spacing-sm
   [ThemeCategory.Spacing]: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'DEFAULT', 'lg', 'xl', 'xxl', 'xxxl'],
   [ThemeCategory.FontSize]: ['extra-small', 'small', 'base', 'medium', 'large', 'extra-large'],
   [ThemeCategory.ComponentSize]: ['small', 'DEFAULT', 'large', 'mini'],
 } as const;
 
-export type ThemeConfig = { [K in ThemeCategory]: Record<(typeof cssVarCodex)[K][number], string> };
+export type ThemeConfig = { [K in ThemeCategory]: Record<typeof cssVarCodex[K][number], string> };
 
 export interface UITheme {
   name: string;
