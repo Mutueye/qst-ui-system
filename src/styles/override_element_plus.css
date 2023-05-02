@@ -1,0 +1,73 @@
+/**
+  element-plus相关样式覆盖，主要是把原组件中一些固定值的样式关联到css变量上，使element-plus组件更符合设计师定制的UI规范
+*/
+
+body {
+  /* 设置el-menu组件背景色/间距 */
+  --el-menu-bg-color: transparent;
+  --el-menu-base-level-padding: var(--el-space);
+  --el-menu-level-padding: var(--el-space-sm);
+}
+
+/* 使element按钮能够根据component-size的值来变更大小 */
+.el-button {
+  --el-button-size: var(--el-component-size);
+  height: var(--el-button-size);
+  padding: 0 var(--el-space-sm);
+}
+
+.el-button--small {
+  --el-button-size: var(--el-component-size-small);
+  padding: 0 var(--el-space-xs);
+}
+
+.el-button--large {
+  --el-button-size: var(--el-component-size-large);
+  padding: 0 var(--el-space);
+}
+
+.el-dialog {
+  --el-dialog-border-radius: var(--el-border-radius-base);
+}
+
+/* el-dialog内边距关联到space-md */
+.el-dialog .el-dialog__body {
+  padding: var(--el-space-md);
+}
+
+/* el-collapse标题颜色关联到text-color-primary */
+.el-collapse {
+  --el-collapse-header-text-color: var(--el-text-color-secondary);
+}
+
+.el-message-box {
+  /* --el-messagebox-title-color: var(--el-text-color-primary); */
+  /* --el-messagebox-width: 420px; */
+  /* 关联弹窗圆角到border-radius-base变量 */
+  --el-messagebox-border-radius: var(--el-border-radius-base);
+
+  /* --el-messagebox-font-size: var(--el-font-size-large); */
+  /* --el-messagebox-content-font-size: var(--el-font-size-base); */
+  /* --el-messagebox-content-color: var(--el-text-color-regular); */
+  /* --el-messagebox-error-font-size: 12px; */
+  /* --el-messagebox-padding-primary: 15px; */
+}
+
+.el-tooltip__trigger:focus-visible {
+  outline: none;
+}
+
+.el-form-item__label {
+  height: var(--el-component-size);
+  line-height: var(--el-component-size);
+}
+
+.el-form-item--large .el-form-item__label {
+  height: var(--el-component-size-large);
+  line-height: var(--el-component-size-large);
+}
+
+.el-form-item--small .el-form-item__label {
+  height: var(--el-component-size-small);
+  line-height: var(--el-component-size-small);
+}
