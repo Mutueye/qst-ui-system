@@ -26,6 +26,10 @@ body {
   padding: 0 var(--el-spacing);
 }
 
+.el-button.is-circle {
+  width: var(--el-button-size);
+}
+
 .el-dialog {
   --el-dialog-border-radius: var(--el-border-radius-base);
 }
