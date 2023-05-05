@@ -58,10 +58,10 @@ export const cssVarCodex = {
   // spacing不是element-plus原有变量，例--el-spacing-sm
   [ThemeCategory.Spacing]: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'DEFAULT', 'lg', 'xl', 'xxl', 'xxxl'],
   [ThemeCategory.FontSize]: ['extra-small', 'small', 'base', 'medium', 'large', 'extra-large'],
-  [ThemeCategory.ComponentSize]: ['small', 'DEFAULT', 'large', 'mini'],
+  [ThemeCategory.ComponentSize]: ['mini', 'small', 'DEFAULT', 'large'],
 } as const;
 
-export type ThemeConfig = { [K in ThemeCategory]: Record<typeof cssVarCodex[K][number], string> };
+export type ThemeConfig = { [K in ThemeCategory]: Record<(typeof cssVarCodex)[K][number], string> };
 
 export interface UITheme {
   name: string;

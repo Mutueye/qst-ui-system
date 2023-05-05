@@ -57,6 +57,21 @@ body {
   /* --el-messagebox-padding-primary: 15px; */
 }
 
+.el-input-number.is-controls-right .el-input-number__decrease,
+.el-input-number.is-controls-right .el-input-number__increase {
+  --el-input-number-controls-height: calc(0.5 * var(--el-component-size) - 1px);
+}
+
+.el-input-number.el-input-number--small.is-controls-right .el-input-number__decrease,
+.el-input-number.el-input-number--small.is-controls-right .el-input-number__increase {
+  --el-input-number-controls-height: calc(0.5 * var(--el-component-size-small) - 1px);
+}
+
+.el-input-number.el-input-number--large.is-controls-right .el-input-number__decrease,
+.el-input-number.el-input-number--large.is-controls-right .el-input-number__increase {
+  --el-input-number-controls-height: calc(0.5 * var(--el-component-size-small) - 1px);
+}
+
 .el-tooltip__trigger:focus-visible {
   outline: none;
 }
