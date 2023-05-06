@@ -65,6 +65,14 @@ body {
   --el-input-number-controls-height: calc(0.5 * var(--el-component-size-large) - 1px);
 }
 
+/* 输入框文字大小适配多种组件尺寸 */
+.el-input--small {
+  font-size: var(--el-font-size-small);
+}
+.el-input--large {
+  font-size: var(--el-font-size-medium);
+}
+
 /* el-radio高度适配多种组件尺寸 */
 .el-radio {
   height: var(--el-component-size);
@@ -94,6 +102,7 @@ body {
 /* el-checkbox高度适配多种组件尺寸 */
 .el-checkbox {
   height: var(--el-component-size);
+  --el-checkbox-font-size: var(--el-font-size-base)
 }
 .el-checkbox.el-checkbox--large {
   height: var(--el-component-size-large);
@@ -149,4 +158,9 @@ body {
 /* el-collapse标题颜色关联到text-color-primary */
 .el-collapse {
   --el-collapse-header-text-color: var(--el-text-color-secondary);
+}
+
+/* el-divider字体大小 */
+.el-divider__text {
+  font-size: var(--el-font-size-base);
 }
