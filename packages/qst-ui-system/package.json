@@ -1,6 +1,6 @@
 {
   "name": "@itshixun/qst-ui-system",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "packageManager": "pnpm@8.3.0",
   "description": "qst ui system",
   "author": "mutueye <mutuyueniao@gmail.com>",
