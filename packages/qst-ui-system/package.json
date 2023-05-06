@@ -1,6 +1,6 @@
 {
   "name": "@itshixun/qst-ui-system",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "packageManager": "pnpm@8.3.0",
   "description": "qst ui system",
   "author": "mutueye <mutuyueniao@gmail.com>",
@@ -27,7 +27,7 @@
   "scripts": {
     "prepare": "simple-git-hooks",
     "build": "rimraf dist && rollup -c",
-    "watch": "imraf dist && rollup -cw",
+    "watch": "rimraf dist && rollup -cw",
     "lint": "npx lint-staged",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
