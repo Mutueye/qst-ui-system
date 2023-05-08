@@ -63,11 +63,11 @@ export const defaultThemeList: UITheme[] = [
         },
         'font-size': {
           'extra-small': '12px',
-          small: '14px',
-          base: '16px',
-          medium: '18px',
-          large: '20px',
-          'extra-large': '24px',
+          small: '12px',
+          base: '14px',
+          medium: '16px',
+          large: '18px',
+          'extra-large': '20px',
         },
         'component-size': {
           mini: '24px',
@@ -135,11 +135,11 @@ export const defaultThemeList: UITheme[] = [
         },
         'font-size': {
           'extra-small': '12px',
-          small: '14px',
-          base: '16px',
-          medium: '18px',
-          large: '20px',
-          'extra-large': '24px',
+          small: '12px',
+          base: '14px',
+          medium: '16px',
+          large: '18px',
+          'extra-large': '20px',
         },
         'component-size': {
           mini: '24px',
