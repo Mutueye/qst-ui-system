@@ -7,6 +7,7 @@
     "build": "lerna run build --parallel",
     "dev": "pnpm build && lerna run dev --parallel",
     "build:example": "pnpm build && lerna run build:example --parallel",
+    "pub": "pnpm -C packages/qst-ui-system pub --no-git-checks",
     "lint": "pnpm -r --workspace-concurrency=1 lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -33,7 +33,8 @@
     "lint:es": "eslint --ext .js,.ts --ignore-path .eslintignore --fix src",
     "lint:es:check": "eslint --ext .js,.ts --ignore-path .eslintignore src",
     "lint:style": "stylelint ./src/**/*.{vue,css,scss} --fix",
-    "lint:style:check": "stylelint ./src/**/*.{vue,css,scss}"
+    "lint:style:check": "stylelint ./src/**/*.{vue,css,scss}",
+    "pub": "pnpm build && npm publish"
   },
   "dependencies": {
     "color2k": "^2.0.2"
