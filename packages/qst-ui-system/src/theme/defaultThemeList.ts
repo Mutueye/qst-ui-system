@@ -68,6 +68,8 @@ export const defaultThemeList: UITheme[] = [
           medium: '16px',
           large: '18px',
           'extra-large': '20px',
+          xxl: '24px',
+          xxxl: '28px',
         },
         'component-size': {
           mini: '24px',
@@ -140,6 +142,8 @@ export const defaultThemeList: UITheme[] = [
           medium: '16px',
           large: '18px',
           'extra-large': '20px',
+          xxl: '24px',
+          xxxl: '28px',
         },
         'component-size': {
           mini: '24px',
@@ -217,6 +221,8 @@ export const defaultThemeList: UITheme[] = [
           medium: '16px',
           large: '18px',
           'extra-large': '20px',
+          xxl: '24px',
+          xxxl: '28px',
         },
         'component-size': {
           mini: '24px',
@@ -289,6 +295,8 @@ export const defaultThemeList: UITheme[] = [
           medium: '16px',
           large: '18px',
           'extra-large': '20px',
+          xxl: '24px',
+          xxxl: '28px',
         },
         'component-size': {
           mini: '24px',
@@ -366,6 +374,8 @@ export const defaultThemeList: UITheme[] = [
           medium: '16px',
           large: '18px',
           'extra-large': '20px',
+          xxl: '24px',
+          xxxl: '28px',
         },
         'component-size': {
           mini: '24px',
@@ -438,6 +448,8 @@ export const defaultThemeList: UITheme[] = [
           medium: '16px',
           large: '18px',
           'extra-large': '20px',
+          xxl: '24px',
+          xxxl: '28px',
         },
         'component-size': {
           mini: '24px',

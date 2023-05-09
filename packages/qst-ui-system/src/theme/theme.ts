@@ -57,7 +57,17 @@ export const cssVarCodex = {
   // [ThemeCategory.BoxShadow]: ['DEFAULT', 'light', 'lighter', 'dark'],
   // spacing不是element-plus原有变量，例--el-spacing-sm
   [ThemeCategory.Spacing]: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'DEFAULT', 'lg', 'xl', 'xxl', 'xxxl'],
-  [ThemeCategory.FontSize]: ['extra-small', 'small', 'base', 'medium', 'large', 'extra-large'],
+  // 在element-plus原有变量之外，新增xxl和xxxl两个字号
+  [ThemeCategory.FontSize]: [
+    'extra-small',
+    'small',
+    'base',
+    'medium',
+    'large',
+    'extra-large',
+    'xxl',
+    'xxxl',
+  ],
   [ThemeCategory.ComponentSize]: ['mini', 'small', 'DEFAULT', 'large'],
 } as const;
 
