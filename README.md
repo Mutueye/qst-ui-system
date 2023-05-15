@@ -18,7 +18,7 @@ QST 前端 UI 基础库：
   - [ ] vant
 - [ ] css 框架适配主题变量配置
   - [x] unocss
-  - [ ] windicss
+  - [ ] windicss (windicss即将停止维护，不再进行适配)
   - [ ] tailwind
 
 ## 对接&使用说明
@@ -38,7 +38,7 @@ QST 前端 UI 基础库：
    initQstTheme();
    // 参数示例：
    initQstTheme({
-     /** css变量命名空间，如果使用element-plus切修改了element-plus的命名空间，需要和element-plus统一 */
+     /** css变量命名空间，如果使用element-plus且修改了element-plus的命名空间，需要和element-plus统一 */
      namespace: '--el',
      /** 主题列表，可以传入设计师定制的主题列表，不传使用默认主题列表 */
      themeList?: UITheme[];

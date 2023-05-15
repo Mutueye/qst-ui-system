@@ -69,7 +69,7 @@ export const cssVarCodex = {
     'xxxl',
   ],
   [ThemeCategory.ComponentSize]: ['mini', 'small', 'DEFAULT', 'large'],
-} as const;
+};
 
 export type ThemeConfig = { [K in ThemeCategory]: Record<(typeof cssVarCodex)[K][number], string> };
 
@@ -106,6 +106,8 @@ export interface ThemeOption {
   cssReset?: boolean;
   /** 需要适配的组件库(进行样式覆盖/主题定制)  */
   uiLibs?: UILib | UILib[];
+  /** 初始主题序号, 默认为主题列表中第一个主题 */
+  initialThemeIndex?: number;
 }
 
 const defaultThemeOption: ThemeOption = {
@@ -131,8 +133,8 @@ export const initQstTheme = (option?: ThemeOption) => {
   // inject theme css var styles to the style tag
   injectThemeStyle(option);
 
-  // set the first theme in theme list as current enabled theme
-  setThemeClassByIndex(0);
+  // set a theme in theme list as current enabled theme
+  setThemeClassByIndex(option && option.initialThemeIndex ? option.initialThemeIndex : 0);
 };
 
 export const injectThemeStyle = (option: ThemeOption) => {
