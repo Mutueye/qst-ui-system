@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface Result<T = any> {
@@ -19,7 +19,7 @@ export interface PaginationModel<T> {
   rows: T[];
 }
 
-export type AxiosPromiseRes<T> = Promise<AxiosResponse<Result<T>>>;
+// export type AxiosPromiseRes<T> = Promise<AxiosResponse<Result<T>>>;
 
 // request contentType
 export enum ContentTypeEnum {
