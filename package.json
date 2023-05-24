@@ -4,10 +4,10 @@
   "description": "",
   "scripts": {
     "prepare": "simple-git-hooks",
-    "build": "lerna run build --parallel",
-    "dev": "pnpm build && lerna run dev --parallel",
-    "build:example": "pnpm build && lerna run build:example --parallel",
-    "pub": "pnpm -C packages/qst-ui-system pub --no-git-checks",
+    "build": "pnpm -r build",
+    "dev": "pnpm build && pnpm -r --workspace-concurrency=0 dev",
+    "build:example": "pnpm build && pnpm -r --workspace-concurrency=0 build:example",
+    "pub": "pnpm --filter @itshixun/qst-ui-system pub --no-git-checks",
     "lint": "pnpm -r --workspace-concurrency=1 lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,9 +15,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@lerna-lite/cli": "^2.3.0",
-    "@lerna-lite/run": "^2.3.0",
-    "lint-staged": "^13.2.2",
     "simple-git-hooks": "^2.8.1"
   },
   "simple-git-hooks": {
