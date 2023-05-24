@@ -19,9 +19,12 @@ importers:
 
   examples/main:
     dependencies:
-      '@iconify/json':
-        specifier: ^2.2.60
-        version: 2.2.60
+      '@iconify-json/line-md':
+        specifier: ^1.1.24
+        version: 1.1.24
+      '@iconify-json/mdi':
+        specifier: ^1.1.52
+        version: 1.1.52
       '@itshixun/qst-ui-system':
         specifier: workspace:^
         version: link:../../packages/qst-ui-system
@@ -625,11 +628,16 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify/json@2.2.60:
-    resolution: {integrity: sha512-0wyZcoJJ193WrLa/NI4yeRnsB9/7s7MKxyOgttU01z5l0Sn7kqtWHc2ltjHVpEI7G465lsdmH0+7ymixUIlR6Q==}
+  /@iconify-json/line-md@1.1.24:
+    resolution: {integrity: sha512-vHQnRZ3ZVDnrFoj8BMU0iTYR9404TrePP4UhCjkfOqkH4gibFoyM6JGO5OiIHv5m/GQvu4nteTICjklsRFUKpA==}
     dependencies:
       '@iconify/types': 2.0.0
-      pathe: 1.1.0
+    dev: false
+
+  /@iconify-json/mdi@1.1.52:
+    resolution: {integrity: sha512-tLzpFcmoGw1/jHcl+BshUd4bqvP4755OUluaARsuKskTp2aIPIAkRQOhzJGpry9CZ0i82z0alq4HrKrp9uvj4A==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: false
 
   /@iconify/types@2.0.0:
@@ -4550,6 +4558,7 @@ packages:
 
   /pathe@1.1.0:
     resolution: {integrity: sha512-ODbEPR0KKHqECXW1GoxdDb+AZvULmXjVPy4rt+pGo2+TnjJTIPJQSVS6N63n8T2Ip+syHhbn52OewKicV0373w==}
+    dev: true
 
   /pathval@1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
