@@ -16,6 +16,7 @@ module.exports = {
   rules: {
     // '@typescript-eslint/explicit-function-return-type': 'warn',
     'vue/multi-word-component-names': 'off',
+    'vue/no-dupe-keys': 'off',
   },
   globals: {
     defineEmits: 'readonly',
