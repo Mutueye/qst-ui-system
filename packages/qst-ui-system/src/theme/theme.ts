@@ -176,7 +176,7 @@ const generateResetStyles = (option: ThemeOption) => {
 
   let styleStr = `${
     cssReset ? normalizeStyles : ''
-  } body { font-size: var(${namespace}-font-size-base); background-color: var(${namespace}-bg-color-page); }`;
+  } body { font-size: var(${namespace}-font-size-base); background-color: var(${namespace}-bg-color); }`;
   if (uiLibsList.includes('element-plus')) {
     styleStr += (overrideElementPlusStyles as string).replace('--el-', `${namespace}-`);
   } else {
