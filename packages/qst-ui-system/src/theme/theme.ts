@@ -92,6 +92,7 @@ export const mixModeBaseColors = {
   },
 };
 
+/** 组件库计划支持'element-ui', 'element-plus', 'ant-design-vue', 'ant-design', 'vant' */
 export type UILib = 'element-ui' | 'element-plus' | 'ant-design-vue' | 'ant-design' | 'vant';
 
 /** 主题选项 */
@@ -137,6 +138,10 @@ export const initQstTheme = (option?: ThemeOption) => {
   setThemeClassByIndex(option && option.initialThemeIndex ? option.initialThemeIndex : 0);
 };
 
+/**
+ * 在header中插入style标签，生成根据传入的option生成的样式
+ * @param option {ThemeOption} UI主题选项
+ */
 export const injectThemeStyle = (option: ThemeOption) => {
   // combind default options
   const finalOption = Object.assign({}, defaultThemeOption, option ? option : {});
@@ -251,6 +256,11 @@ const generateThemeStyle = ({
   return styleStr;
 };
 
+/**
+ * 根据传入的主题序号切换主题
+ * @param themeIndex {number} 主题列表中的序号
+ * @returns void
+ */
 export const setThemeClassByIndex = (themeIndex: number) => {
   // set theme class name on "html" tag
   if (themeIndex > currentThemeList.length - 1) return;
