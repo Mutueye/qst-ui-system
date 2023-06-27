@@ -164,3 +164,19 @@ body {
 .el-divider__text {
   font-size: var(--el-font-size-base);
 }
+
+/* 禁用按钮focus后的浅色效果 */
+.el-button:focus {
+  color: var(--el-button-text-color);
+  background-color: var(--el-button-bg-color);
+  border-color: var(--el-button-border-color);
+}
+/* 避免被上面:focus样式覆盖，:active效果在这里要重新声明一下 */
+.el-button:active {
+  color: var(--el-button-active-text-color);
+  background-color: var(--el-button-active-bg-color);
+  border-color: var(--el-button-active-border-color);
+}
+.el-button.is-link:focus {
+  color: var(--el-button-text-color);
+}
