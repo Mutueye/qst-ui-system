@@ -22,7 +22,7 @@ export const defaultThemeList: UITheme[] = [
         'bg-color': {
           DEFAULT: '#ffffff',
           page: '#f7f8fd',
-          secondary: '#eeeeee',
+          secondary: '#f3f5fb',
         },
         'border-color': {
           'extra-light': '#F6F7FA',
@@ -38,7 +38,7 @@ export const defaultThemeList: UITheme[] = [
           lighter: '#f8fafc',
           light: '#f5f7fa',
           DEFAULT: '#f0f2f5',
-          dark: '#ebedf0',
+          dark: '#eeeeee',
           darker: '#e6e8eb',
         },
         'border-radius': {

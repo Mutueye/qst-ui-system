@@ -277,3 +277,18 @@ export const setThemeClassByIndex = (themeIndex: number) => {
     htmlEl.classList.add(targetThemeName);
   }
 };
+
+/**
+ * 根据传入的主题名称切换主题
+ * @param themeName {string} 主题名称
+ * @returns boolean 设置成功返回true，否则返回false
+ */
+export const setThemeClassByName = (themeName: string) => {
+  const index = currentThemeList.findIndex((theme) => theme.name === themeName);
+  if (index !== -1) {
+    setThemeClassByIndex(index);
+    return true;
+  } else {
+    return false;
+  }
+};
