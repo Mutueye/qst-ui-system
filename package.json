@@ -7,7 +7,7 @@
     "build": "pnpm -r build",
     "dev": "pnpm build && pnpm -r --workspace-concurrency=0 dev",
     "build:example": "pnpm build && pnpm -r --workspace-concurrency=0 build:example",
-    "pub": "pnpm --filter @itshixun/qst-ui-system pub --no-git-checks",
+    "pub": "pnpm build && pnpm --filter @itshixun/qst-ui-system pub --no-git-checks",
     "lint": "pnpm -r --workspace-concurrency=1 lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
