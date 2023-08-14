@@ -101,11 +101,11 @@ html {
 
 /* Responsive images and other embedded objects */
 /* if you don't have full control over `img` tags (if you have to overcome attributes), consider adding height: auto */
-img,
+/* img,
 object,
 embed {
   max-width: 100%;
-}
+} */
 
 ul {
   list-style: none;
