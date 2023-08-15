@@ -107,8 +107,8 @@ const getDefaultSizes = (namespace: string) => {
   return {
     ...generateCssVarFromConfig(cssVarConfig, 'spacing', namespace, 'spacing'),
     ...generateCssVarFromConfig(cssVarConfig, 'component-size', namespace, 'component-size'),
-    header: '72px',
-    'left-menu': '300px',
+    // header: '72px',
+    // 'left-menu': '300px',
   };
 };
 

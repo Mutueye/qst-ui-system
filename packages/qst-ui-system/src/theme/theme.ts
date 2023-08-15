@@ -39,10 +39,23 @@ export enum MixModeEnum {
 }
 
 export const cssVarCodex = {
-  [ThemeCategory.Color]: ['primary', 'success', 'warning', 'danger', 'info'],
-  [ThemeCategory.TextColor]: ['primary', 'regular', 'secondary', 'placeholder', 'disabled'],
-  [ThemeCategory.BgColor]: ['DEFAULT', 'page', 'secondary'],
-  [ThemeCategory.BorderColor]: ['extra-light', 'lighter', 'light', 'DEFAULT', 'dark', 'darker'],
+  [ThemeCategory.Color]: ['primary', 'success', 'warning', 'danger', 'info'] as const,
+  [ThemeCategory.TextColor]: [
+    'primary',
+    'regular',
+    'secondary',
+    'placeholder',
+    'disabled',
+  ] as const,
+  [ThemeCategory.BgColor]: ['DEFAULT', 'page', 'secondary', 'reverse'] as const,
+  [ThemeCategory.BorderColor]: [
+    'extra-light',
+    'lighter',
+    'light',
+    'DEFAULT',
+    'dark',
+    'darker',
+  ] as const,
   [ThemeCategory.FillColor]: [
     'blank',
     'extra-light',
@@ -51,12 +64,23 @@ export const cssVarCodex = {
     'DEFAULT',
     'dark',
     'darker',
-  ],
+  ] as const,
   // border radius 在 element-plus 定义的变量之外，新增了'large'和'huge'值
-  [ThemeCategory.BorderRadius]: ['small', 'base', 'large', 'huge', 'round', 'circle'],
+  [ThemeCategory.BorderRadius]: ['small', 'base', 'large', 'huge', 'round', 'circle'] as const,
   // [ThemeCategory.BoxShadow]: ['DEFAULT', 'light', 'lighter', 'dark'],
   // spacing不是element-plus原有变量，例--el-spacing-sm
-  [ThemeCategory.Spacing]: ['xxxs', 'xxs', 'xs', 'sm', 'md', 'DEFAULT', 'lg', 'xl', 'xxl', 'xxxl'],
+  [ThemeCategory.Spacing]: [
+    'xxxs',
+    'xxs',
+    'xs',
+    'sm',
+    'md',
+    'DEFAULT',
+    'lg',
+    'xl',
+    'xxl',
+    'xxxl',
+  ] as const,
   // 在element-plus原有变量之外，新增xxl和xxxl两个字号
   [ThemeCategory.FontSize]: [
     'extra-small',
@@ -67,8 +91,8 @@ export const cssVarCodex = {
     'extra-large',
     'xxl',
     'xxxl',
-  ],
-  [ThemeCategory.ComponentSize]: ['mini', 'small', 'DEFAULT', 'large'],
+  ] as const,
+  [ThemeCategory.ComponentSize]: ['mini', 'small', 'DEFAULT', 'large'] as const,
 };
 
 export type ThemeConfig = { [K in ThemeCategory]: Record<(typeof cssVarCodex)[K][number], string> };
