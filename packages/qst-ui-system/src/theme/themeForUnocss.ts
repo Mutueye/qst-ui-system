@@ -116,9 +116,9 @@ const getDefaultSizes = (namespace: string) => {
 // https://github.com/unocss/unocss/tree/main/packages/preset-mini/src/_theme
 export const generateUnocssTheme = (namespace = '--el') => {
   return {
-    width: getDefaultSizes(namespace),
-    height: getDefaultSizes(namespace),
-    spacing: getDefaultSizes(namespace),
+    width: getDefaultSizes(namespace) as Record<string, string>,
+    height: getDefaultSizes(namespace) as Record<string, string>,
+    spacing: getDefaultSizes(namespace) as Record<string, string>,
 
     // boxShadow: {
     //   // 示例
