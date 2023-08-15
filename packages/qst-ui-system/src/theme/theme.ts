@@ -1,4 +1,4 @@
-import { mix, toHex /* , toRgba */ } from 'color2k';
+import { mix, toHex } from 'color2k';
 import { defaultThemeList } from './defaultThemeList';
 import normalizeStyles from '../styles/normalize.css';
 import overrideElementPlusStyles from '../styles/override_element_plus.css';
@@ -163,7 +163,7 @@ export const injectThemeStyle = (option: ThemeOption) => {
       if ((mode as DayNightModeEnum) === DayNightModeEnum.light) {
         styleStr += `.${theme.name} { ${themeStyleStr} }`;
       } else {
-        styleStr += `.${theme.name}.${mode} { ${themeStyleStr} }`;
+        styleStr += `.${theme.name}.${mode} { ${themeStyleStr} } .${mode} { .${theme.name} { ${themeStyleStr} } }`;
       }
     });
   });
@@ -192,15 +192,6 @@ const generateResetStyles = (option: ThemeOption) => {
   return styleStr;
 };
 
-// const getNakedRgba = (str: string) => {
-//   const rgbaStr = toRgba(str);
-//   if (rgbaStr.startsWith('rgba(')) {
-//     return rgbaStr.slice(5, rgbaStr.length - 1);
-//   } else {
-//     return rgbaStr;
-//   }
-// };
-
 const generateThemeStyle = ({
   namespace,
   targetTheme,
@@ -219,11 +210,6 @@ const generateThemeStyle = ({
       const cssVarName =
         valKey === 'DEFAULT' ? `${namespace}-${configKey}` : `${namespace}-${configKey}-${valKey}`;
       styleStr += `${cssVarName}: ${oneConfig[valKey as keyof typeof oneConfig]}; `;
-      // if (configKey.includes('color')) {
-      //   styleStr += `${cssVarName + '-rgba'}: ${getNakedRgba(
-      //     oneConfig[valKey as keyof typeof oneConfig],
-      //   )}; `;
-      // }
       if (configKey === ThemeCategory.Color) {
         Object.keys(MixModeEnum).forEach((mixmode) => {
           for (let i = 1; i < 10; i++) {
@@ -234,13 +220,6 @@ const generateThemeStyle = ({
                 i * 0.1,
               ),
             )}; `;
-            // styleStr += `${cssVarName}-${mixmode}-${i}-rgba: ${getNakedRgba(
-            //   mix(
-            //     oneConfig[valKey as keyof typeof oneConfig],
-            //     mixModeBaseColors[mode][mixmode as MixModeEnum],
-            //     i * 0.1,
-            //   ),
-            // )}; `;
           }
         });
       }
