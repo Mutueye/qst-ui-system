@@ -47,7 +47,7 @@ export const cssVarCodex = {
     'placeholder',
     'disabled',
   ] as const,
-  [ThemeCategory.BgColor]: ['DEFAULT', 'page', 'secondary', 'reverse'] as const,
+  [ThemeCategory.BgColor]: ['DEFAULT', 'page', 'secondary'] as const,
   [ThemeCategory.BorderColor]: [
     'extra-light',
     'lighter',
@@ -58,6 +58,7 @@ export const cssVarCodex = {
   ] as const,
   [ThemeCategory.FillColor]: [
     'blank',
+    'reverse',
     'extra-light',
     'lighter',
     'light',

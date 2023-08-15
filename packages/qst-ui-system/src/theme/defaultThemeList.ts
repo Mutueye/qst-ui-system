@@ -23,7 +23,6 @@ export const defaultThemeList: UITheme[] = [
           DEFAULT: '#ffffff',
           page: '#f7f8fd',
           secondary: '#f3f5fb',
-          reverse: '#000000',
         },
         'border-color': {
           'extra-light': '#F6F7FA',
@@ -35,6 +34,7 @@ export const defaultThemeList: UITheme[] = [
         },
         'fill-color': {
           blank: '#ffffff',
+          reverse: '#000000',
           'extra-light': '#fafcff',
           lighter: '#f8fafc',
           light: '#f5f7fa',
@@ -98,7 +98,6 @@ export const defaultThemeList: UITheme[] = [
           DEFAULT: '#28303d',
           page: '#1b2431',
           secondary: '#171f2b',
-          reverse: '#ffffff',
         },
         'border-color': {
           'extra-light': '#313a47',
@@ -110,6 +109,7 @@ export const defaultThemeList: UITheme[] = [
         },
         'fill-color': {
           blank: 'transparent',
+          reverse: '#ffffff',
           'extra-light': '#252c38',
           lighter: '#222b38',
           light: '#1f2733',
@@ -178,7 +178,6 @@ export const defaultThemeList: UITheme[] = [
           DEFAULT: '#ffffff',
           page: '#f8f9fa',
           secondary: '#f2f3f4',
-          reverse: '#000000',
         },
         'border-color': {
           'extra-light': '#f2f6fc',
@@ -190,6 +189,7 @@ export const defaultThemeList: UITheme[] = [
         },
         'fill-color': {
           blank: '#ffffff',
+          reverse: '#000000',
           'extra-light': '#fafcff',
           lighter: '#fafafa',
           light: '#f5f7fa',
@@ -253,7 +253,6 @@ export const defaultThemeList: UITheme[] = [
           DEFAULT: '#252525',
           page: '#181818',
           secondary: '#111111',
-          reverse: '#ffffff',
         },
         'border-color': {
           'extra-light': '#2B2B2C',
@@ -265,6 +264,7 @@ export const defaultThemeList: UITheme[] = [
         },
         'fill-color': {
           blank: 'transparent',
+          reverse: '#ffffff',
           'extra-light': '#191919',
           lighter: '#1D1D1D',
           light: '#262727',
@@ -333,7 +333,6 @@ export const defaultThemeList: UITheme[] = [
           DEFAULT: '#ffffff',
           page: '#f7f8fd',
           secondary: '#eef0f8',
-          reverse: '#000000',
         },
         'border-color': {
           'extra-light': '#f2f6fc',
@@ -345,6 +344,7 @@ export const defaultThemeList: UITheme[] = [
         },
         'fill-color': {
           blank: '#ffffff',
+          reverse: '#000000',
           'extra-light': '#fafcff',
           lighter: '#f8fafc',
           light: '#f5f7fa',
@@ -408,7 +408,6 @@ export const defaultThemeList: UITheme[] = [
           DEFAULT: '#28303d',
           page: '#1b2431',
           secondary: '#171f2b',
-          reverse: '#ffffff',
         },
         'border-color': {
           'extra-light': '#313a47',
@@ -419,6 +418,7 @@ export const defaultThemeList: UITheme[] = [
           darker: '#707b8c',
         },
         'fill-color': {
+          reverse: '#ffffff',
           blank: 'transparent',
           'extra-light': '#252c38',
           lighter: '#222b38',
