@@ -15,6 +15,8 @@ export enum ThemeCategory {
   BorderColor = 'border-color',
   // 填充色
   FillColor = 'fill-color',
+  // 自定义附加色
+  ExtraColor = 'extra-color',
   // 圆角
   BorderRadius = 'border-radius',
   // 暂不启用box-shadow配置: BoxShadow = 'box-shadow',
@@ -66,6 +68,8 @@ export const cssVarCodex = {
     'dark',
     'darker',
   ] as const,
+  // 非element-plus变量，根据项目实际情况自定义添加额外颜色
+  [ThemeCategory.ExtraColor]: [] as string[],
   // border radius 在 element-plus 定义的变量之外，新增了'large'和'huge'值
   [ThemeCategory.BorderRadius]: ['small', 'base', 'large', 'huge', 'round', 'circle'] as const,
   // [ThemeCategory.BoxShadow]: ['DEFAULT', 'light', 'lighter', 'dark'],

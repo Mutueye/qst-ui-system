@@ -42,6 +42,7 @@ export const defaultThemeList: UITheme[] = [
           dark: '#eeeeee',
           darker: '#e6e8eb',
         },
+        'extra-color': {},
         'border-radius': {
           small: '2px',
           base: '4px',
@@ -117,6 +118,7 @@ export const defaultThemeList: UITheme[] = [
           dark: '#1a222e',
           darker: '#171e29',
         },
+        'extra-color': {},
         'border-radius': {
           small: '2px',
           base: '4px',
@@ -197,6 +199,7 @@ export const defaultThemeList: UITheme[] = [
           dark: '#ebedf0',
           darker: '#e6e8eb',
         },
+        'extra-color': {},
         'border-radius': {
           small: '2px',
           base: '4px',
@@ -272,6 +275,7 @@ export const defaultThemeList: UITheme[] = [
           dark: '#39393A',
           darker: '#424243',
         },
+        'extra-color': {},
         'border-radius': {
           small: '2px',
           base: '4px',
@@ -352,6 +356,7 @@ export const defaultThemeList: UITheme[] = [
           dark: '#ebedf0',
           darker: '#e6e8eb',
         },
+        'extra-color': {},
         'border-radius': {
           small: '2px',
           base: '4px',
@@ -427,6 +432,7 @@ export const defaultThemeList: UITheme[] = [
           dark: '#1a222e',
           darker: '#171e29',
         },
+        'extra-color': {},
         'border-radius': {
           small: '2px',
           base: '4px',

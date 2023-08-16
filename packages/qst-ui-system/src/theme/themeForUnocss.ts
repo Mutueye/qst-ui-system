@@ -161,6 +161,7 @@ export const generateUnocssTheme = (namespace = '--el') => {
       bg: generateCssVarFromConfig(cssVarConfig, 'bg-color', namespace),
       border: generateCssVarFromConfig(cssVarConfig, 'border-color', namespace),
       fill: generateCssVarFromConfig(cssVarConfig, 'fill-color', namespace),
+      extra: generateCssVarFromConfig(cssVarConfig, 'extra-color', namespace),
     },
     // fontFamily: {
     //   main: 'PingFang SC, Microsoft YaHei, Hiragino Sans GB, SimSun, sans-serif',
