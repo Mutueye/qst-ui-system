@@ -39,6 +39,10 @@ body {
   padding: var(--el-spacing-md);
 }
 
+.el-dialog .el-dialog__header {
+  margin-right: 0 !important;
+}
+
 /* 关联弹窗圆角到border-radius-base变量 */
 .el-message-box {
   /* --el-messagebox-title-color: var(--el-text-color-primary); */

@@ -118,6 +118,17 @@ export const generateUnocssTheme = (namespace = '--el') => {
   return {
     width: getDefaultSizes(namespace) as Record<string, string>,
     height: getDefaultSizes(namespace) as Record<string, string>,
+    maxWidth: getDefaultSizes(namespace) as Record<string, string>,
+    maxHeight: getDefaultSizes(namespace) as Record<string, string>,
+    minWidth: getDefaultSizes(namespace) as Record<string, string>,
+    minHeight: getDefaultSizes(namespace) as Record<string, string>,
+    inlineSize: getDefaultSizes(namespace) as Record<string, string>,
+    blockSize: getDefaultSizes(namespace) as Record<string, string>,
+    maxInlineSize: getDefaultSizes(namespace) as Record<string, string>,
+    maxBlockSize: getDefaultSizes(namespace) as Record<string, string>,
+    minInlineSize: getDefaultSizes(namespace) as Record<string, string>,
+    minBlockSize: getDefaultSizes(namespace) as Record<string, string>,
+    lineHeight: getDefaultSizes(namespace) as Record<string, string>,
     spacing: getDefaultSizes(namespace) as Record<string, string>,
 
     // boxShadow: {
