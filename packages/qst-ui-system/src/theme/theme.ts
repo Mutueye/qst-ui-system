@@ -138,6 +138,8 @@ export interface ThemeOption {
   uiLibs?: UILib | UILib[];
   /** 初始主题序号, 默认为主题列表中第一个主题 */
   initialThemeIndex?: number;
+  /** 注入<head>内的样式id，默认qst_theme */
+  styleTagId?: string;
 }
 
 const defaultThemeOption: ThemeOption = {
@@ -145,9 +147,11 @@ const defaultThemeOption: ThemeOption = {
   themeList: defaultThemeList,
   cssReset: true,
   uiLibs: 'element-plus',
+  styleTagId: 'qst_theme_styles',
 };
 
 export const currentThemeList: UITheme[] = [];
+export const currentThemeOption: ThemeOption = defaultThemeOption;
 
 /**
  * 初始化QstUI
@@ -158,7 +162,7 @@ export const initQstTheme = (option?: ThemeOption) => {
   const head = document.head || document.getElementsByTagName('head')[0];
   const style = document.createElement('style');
   head.appendChild(style);
-  style.setAttribute('id', 'theme');
+  style.setAttribute('id', option.styleTagId);
 
   // inject theme css var styles to the style tag
   injectThemeStyle(option);
@@ -168,12 +172,27 @@ export const initQstTheme = (option?: ThemeOption) => {
 };
 
 /**
+ * 为保持样式覆盖，重新将注入<head>的样式移动到最后。比如使用动态加载组件功能时，
+ * 每次切换页面都会在head内新增部分样式，此时需要重新将主题样式移动到最后，来保证主题样式的覆盖作用
+ */
+export const resetThemeStyleInjection = () => {
+  const head = document.head || document.getElementsByTagName('head')[0];
+  const themeEl = document.getElementById(currentThemeOption.styleTagId);
+  const lastEl = head.lastElementChild;
+  if (lastEl.id !== themeEl.id) {
+    head.removeChild(themeEl);
+    head.append(themeEl);
+  }
+};
+
+/**
  * 在header中插入style标签，生成根据传入的option生成的样式
  * @param option {ThemeOption} UI主题选项
  */
 export const injectThemeStyle = (option: ThemeOption) => {
   // combind default options
   const finalOption = Object.assign({}, defaultThemeOption, option ? option : {});
+  Object.assign(currentThemeOption, finalOption);
   // clear theme list
   currentThemeList.length = 0;
   // set current theme list
