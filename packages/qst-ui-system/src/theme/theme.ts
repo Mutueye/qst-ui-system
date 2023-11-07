@@ -151,7 +151,7 @@ const defaultThemeOption: ThemeOption = {
 };
 
 export const currentThemeList: UITheme[] = [];
-export const currentThemeOption: ThemeOption = defaultThemeOption;
+export const currentThemeOption: ThemeOption = Object.assign({}, defaultThemeOption);
 
 /**
  * 初始化QstUI
@@ -162,10 +162,11 @@ export const initQstTheme = (option?: ThemeOption) => {
   const head = document.head || document.getElementsByTagName('head')[0];
   const style = document.createElement('style');
   head.appendChild(style);
-  style.setAttribute('id', option.styleTagId);
+  Object.assign(currentThemeOption, option ? option : {});
+  style.setAttribute('id', currentThemeOption.styleTagId);
 
   // inject theme css var styles to the style tag
-  injectThemeStyle(option);
+  injectThemeStyle();
 
   // set a theme in theme list as current enabled theme
   setThemeClassByIndex(option && option.initialThemeIndex ? option.initialThemeIndex : 0);
@@ -189,18 +190,15 @@ export const resetThemeStyleInjection = () => {
  * 在header中插入style标签，生成根据传入的option生成的样式
  * @param option {ThemeOption} UI主题选项
  */
-export const injectThemeStyle = (option: ThemeOption) => {
-  // combind default options
-  const finalOption = Object.assign({}, defaultThemeOption, option ? option : {});
-  Object.assign(currentThemeOption, finalOption);
+export const injectThemeStyle = () => {
   // clear theme list
   currentThemeList.length = 0;
   // set current theme list
-  currentThemeList.push(...finalOption.themeList);
+  currentThemeList.push(...currentThemeOption.themeList);
 
-  const styleEl = document.head.querySelector('#theme') as HTMLElement;
+  const styleEl = document.head.querySelector(`#${currentThemeOption.styleTagId}`) as HTMLElement;
   let styleStr = '';
-  const { namespace, themeList } = finalOption;
+  const { namespace, themeList } = currentThemeOption;
   themeList.forEach((theme) => {
     Object.keys(DayNightModeEnum).forEach((mode) => {
       const themeStyleStr = generateThemeStyle({
@@ -215,9 +213,9 @@ export const injectThemeStyle = (option: ThemeOption) => {
       }
     });
   });
-  styleEl.innerText = `${generateResetStyles(finalOption)} ${styleStr}`;
-  if (finalOption && typeof finalOption.onStylesSet === 'function') {
-    finalOption.onStylesSet();
+  styleEl.innerText = `${generateResetStyles(currentThemeOption)} ${styleStr}`;
+  if (currentThemeOption && typeof currentThemeOption.onStylesSet === 'function') {
+    currentThemeOption.onStylesSet();
   }
 };
 
