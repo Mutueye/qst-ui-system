@@ -2,8 +2,8 @@
   element-plus相关样式覆盖，主要是把原组件中一些固定值的样式关联到css变量上，使element-plus组件更符合设计师定制的UI规范
 */
 
-/** body内定义变量，覆盖掉:root和:host内的element-plus变量定义 */
-body {
+/** html内定义变量，覆盖掉:root和:host内的element-plus变量定义 */
+html {
   --el-menu-bg-color: transparent;
   --el-menu-base-level-padding: var(--el-spacing);
   --el-menu-level-padding: var(--el-spacing-sm);
@@ -39,6 +39,11 @@ body {
   --el-border-color-hover: var(--el-text-color-disabled);
   --el-border: var(--el-border-width) var(--el-border-style) var(--el-border-color);
   --el-svg-monochrome-grey: var(--el-border-color);
+}
+
+html.dark {
+  --el-mask-color: rgb(0 0 0 / 80%);
+  --el-mask-color-extra-light: rgb(0 0 0 / 30%);
 }
 
 /* 使element按钮能够根据component-size的值来变更大小 */
