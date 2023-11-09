@@ -2,11 +2,43 @@
   element-plus相关样式覆盖，主要是把原组件中一些固定值的样式关联到css变量上，使element-plus组件更符合设计师定制的UI规范
 */
 
+/** body内定义变量，覆盖掉:root和:host内的element-plus变量定义 */
 body {
-  /* 设置el-menu组件背景色/间距 */
   --el-menu-bg-color: transparent;
   --el-menu-base-level-padding: var(--el-spacing);
   --el-menu-level-padding: var(--el-spacing-sm);
+  --el-menu-active-color: var(--el-color-primary);
+  --el-menu-text-color: var(--el-text-color-primary);
+  --el-menu-hover-text-color: var(--el-color-primary);
+  --el-menu-hover-bg-color: var(--el-color-primary-light-9);
+  --el-menu-item-height: calc(var(--el-component-size-small) * 2);
+  --el-menu-sub-item-height: calc(var(--el-menu-item-height) - 6px);
+  --el-menu-horizontal-height: calc(var(--el-component-size) * 2);
+  --el-menu-horizontal-sub-item-height: var(--el-component-size);
+  --el-menu-item-font-size: var(--el-font-size-base);
+  --el-menu-item-hover-fill: var(--el-color-primary-light-9);
+  --el-menu-border-color: var(--el-border-color);
+  --el-menu-icon-width: 24px;
+
+  --el-loading-spinner-size: var(--el-component-size);
+  --el-loading-fullscreen-spinner-size: var(--el-component-size-large);
+
+  --el-popup-modal-bg-color: var(--el-color-black);
+  --el-popup-modal-opacity: .5;
+
+  --el-disabled-bg-color: var(--el-fill-color-light);
+  --el-disabled-text-color: var(--el-text-color-placeholder);
+  --el-disabled-border-color: var(--el-border-color-light);
+  --el-overlay-color: rgb(0 0 0 / 80%);
+  --el-overlay-color-light: rgb(0 0 0 / 70%);
+  --el-overlay-color-lighter: rgb(0 0 0 / 50%);
+  --el-mask-color: rgb(255 255 255 / 90%);
+  --el-mask-color-extra-light: rgb(255 255 255 / 30%);
+  --el-border-width: 1px;
+  --el-border-style: solid;
+  --el-border-color-hover: var(--el-text-color-disabled);
+  --el-border: var(--el-border-width) var(--el-border-style) var(--el-border-color);
+  --el-svg-monochrome-grey: var(--el-border-color);
 }
 
 /* 使element按钮能够根据component-size的值来变更大小 */

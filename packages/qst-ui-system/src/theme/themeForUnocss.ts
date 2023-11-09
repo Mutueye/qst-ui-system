@@ -1,6 +1,6 @@
 import { cssVarCodex } from './theme';
 
-// css变量前缀
+// css变量配置项类型
 export type CssVarConfigType = Record<string, (string | CssVarConfigType)[]>;
 export interface ConfigList {
   [key: string]: ConfigList | string;
@@ -54,6 +54,7 @@ const getConfigFromCodex = () => {
 //   'font-size': ['extra-small', 'small', 'base', 'medium', 'large', 'extra-large'],
 //   'component-size': ['small', 'DEFAULT', 'large'],
 // };
+/** css变量配置表，例上述注释这样 */
 const cssVarConfig: CssVarConfigType = getConfigFromCodex();
 
 // 生成主题色变量配置表
@@ -74,39 +75,62 @@ const generateMainColors = (namespace: string) => {
 };
 
 // 根据类型生成对应的css变量配置列表
-const generateCssVarFromConfig = (
-  config: CssVarConfigType,
-  key: string,
-  namespace: string,
+const generateCssVarFromConfig = ({
+  key,
+  namespace,
   keyPrepend = '',
-) => {
+  generateNegative = false,
+}: {
+  /** 变量配置表对应的索引key，比如 color / text-color / spacing 等 */
+  key: string;
+  /** css变量命名空间，默认'--el' */
+  namespace: string;
+  /** 可选，给unocss主题配置项的key附加前缀，比如width配置中，增加'spacing前缀'，生成 { ..., 'spacing-xl': '--el-spacing-xl', ...} */
+  keyPrepend?: string;
+  /** 是否生成负值变量 */
+  generateNegative?: boolean;
+}) => {
   const list: ConfigList = {};
-  const targetCnofigSource = config[key];
-  if (targetCnofigSource) {
-    targetCnofigSource.forEach((type) => {
+  const targetConfigSource = cssVarConfig[key];
+  if (targetConfigSource) {
+    targetConfigSource.forEach((type) => {
       if (typeof type === 'string') {
+        let configKey = keyPrepend ? keyPrepend + '-' + type : type;
+        let cssVarStr = `var(${namespace}-${key}-${type})`;
         if (type === 'DEFAULT') {
-          list[keyPrepend ? keyPrepend : type] = `var(${namespace}-${key})`;
-        } else {
-          list[keyPrepend ? keyPrepend + '-' + type : type] = `var(${namespace}-${key}-${type})`;
+          configKey = keyPrepend ? keyPrepend : type;
+          cssVarStr = `var(${namespace}-${key})`;
         }
+        list[configKey] = cssVarStr;
+        if (generateNegative) list[`${configKey}-negative`] = `calc(-1 * ${cssVarStr})`;
       } else {
         const subKey = Object.keys(type as CssVarConfigType)[0];
-        list[keyPrepend ? keyPrepend + '-' + subKey : subKey] = generateCssVarFromConfig(
-          type as CssVarConfigType,
-          subKey,
-          `${namespace}-${key}`,
-        );
+        list[keyPrepend ? keyPrepend + '-' + subKey : subKey] = generateCssVarFromConfig({
+          key: subKey,
+          namespace: `${namespace}-${key}`,
+          generateNegative,
+        });
       }
     });
   }
+
   return list;
 };
 
 const getDefaultSizes = (namespace: string) => {
   return {
-    ...generateCssVarFromConfig(cssVarConfig, 'spacing', namespace, 'spacing'),
-    ...generateCssVarFromConfig(cssVarConfig, 'component-size', namespace, 'component-size'),
+    ...generateCssVarFromConfig({
+      key: 'spacing',
+      namespace,
+      keyPrepend: 'spacing',
+      generateNegative: true,
+    }),
+    ...generateCssVarFromConfig({
+      key: 'component-size',
+      namespace,
+      keyPrepend: 'component-size',
+      generateNegative: true,
+    }),
     // header: '72px',
     // 'left-menu': '300px',
   };
@@ -115,21 +139,22 @@ const getDefaultSizes = (namespace: string) => {
 // theme配置示例。默认theme配置详见unocss源码：
 // https://github.com/unocss/unocss/tree/main/packages/preset-mini/src/_theme
 export const generateUnocssTheme = (namespace = '--el') => {
+  const defaultSizes = getDefaultSizes(namespace) as Record<string, string>;
   return {
-    width: getDefaultSizes(namespace) as Record<string, string>,
-    height: getDefaultSizes(namespace) as Record<string, string>,
-    maxWidth: getDefaultSizes(namespace) as Record<string, string>,
-    maxHeight: getDefaultSizes(namespace) as Record<string, string>,
-    minWidth: getDefaultSizes(namespace) as Record<string, string>,
-    minHeight: getDefaultSizes(namespace) as Record<string, string>,
-    inlineSize: getDefaultSizes(namespace) as Record<string, string>,
-    blockSize: getDefaultSizes(namespace) as Record<string, string>,
-    maxInlineSize: getDefaultSizes(namespace) as Record<string, string>,
-    maxBlockSize: getDefaultSizes(namespace) as Record<string, string>,
-    minInlineSize: getDefaultSizes(namespace) as Record<string, string>,
-    minBlockSize: getDefaultSizes(namespace) as Record<string, string>,
-    lineHeight: getDefaultSizes(namespace) as Record<string, string>,
-    spacing: getDefaultSizes(namespace) as Record<string, string>,
+    width: defaultSizes,
+    height: defaultSizes,
+    maxWidth: defaultSizes,
+    maxHeight: defaultSizes,
+    minWidth: defaultSizes,
+    minHeight: defaultSizes,
+    inlineSize: defaultSizes,
+    blockSize: defaultSizes,
+    maxInlineSize: defaultSizes,
+    maxBlockSize: defaultSizes,
+    minInlineSize: defaultSizes,
+    minBlockSize: defaultSizes,
+    lineHeight: defaultSizes,
+    spacing: defaultSizes,
 
     // boxShadow: {
     //   // 示例
@@ -160,25 +185,22 @@ export const generateUnocssTheme = (namespace = '--el') => {
       // xl: '10px',
       // xxl: '12px',
       // full: '9999px',
-      ...(generateCssVarFromConfig(cssVarConfig, 'border-radius', namespace) as Record<
-        string,
-        string
-      >),
+      ...(generateCssVarFromConfig({ key: 'border-radius', namespace }) as Record<string, string>),
     },
     colors: {
       theme: `var(${namespace}-color-primary)`,
       ...generateMainColors(namespace),
-      text: generateCssVarFromConfig(cssVarConfig, 'text-color', namespace),
-      bg: generateCssVarFromConfig(cssVarConfig, 'bg-color', namespace),
-      border: generateCssVarFromConfig(cssVarConfig, 'border-color', namespace),
-      fill: generateCssVarFromConfig(cssVarConfig, 'fill-color', namespace),
-      extra: generateCssVarFromConfig(cssVarConfig, 'extra-color', namespace),
+      text: generateCssVarFromConfig({ key: 'text-color', namespace }),
+      bg: generateCssVarFromConfig({ key: 'bg-color', namespace }),
+      border: generateCssVarFromConfig({ key: 'border-color', namespace }),
+      fill: generateCssVarFromConfig({ key: 'fill-color', namespace }),
+      extra: generateCssVarFromConfig({ key: 'extra-color', namespace }),
     },
     // fontFamily: {
     //   main: 'PingFang SC, Microsoft YaHei, Hiragino Sans GB, SimSun, sans-serif',
     // },
     fontSize: {
-      ...(generateCssVarFromConfig(cssVarConfig, 'font-size', namespace) as Record<string, string>),
+      ...(generateCssVarFromConfig({ key: 'font-size', namespace }) as Record<string, string>),
     },
   };
 };

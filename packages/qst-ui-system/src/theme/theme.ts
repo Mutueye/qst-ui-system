@@ -2,6 +2,7 @@ import { mix, toHex } from 'color2k';
 import { defaultThemeList } from './defaultThemeList';
 import normalizeStyles from '../styles/normalize.css';
 import overrideElementPlusStyles from '../styles/override_element_plus.css';
+import { toRgb } from './utils';
 
 // theme css variable categories
 export enum ThemeCategory {
@@ -140,6 +141,8 @@ export interface ThemeOption {
   initialThemeIndex?: number;
   /** 注入<head>内的样式id，默认qst_theme */
   styleTagId?: string;
+  /** 开启自动重置样式注入功能：监控<head>中的样式顺序，如果新增样式标签，自动将主题样式重置到最底部，保证主题样式的覆盖作用，默认true */
+  autoResetStyleInjection: boolean;
 }
 
 const defaultThemeOption: ThemeOption = {
@@ -148,6 +151,7 @@ const defaultThemeOption: ThemeOption = {
   cssReset: true,
   uiLibs: 'element-plus',
   styleTagId: 'qst_theme_styles',
+  autoResetStyleInjection: true,
 };
 
 export const currentThemeList: UITheme[] = [];
@@ -170,6 +174,10 @@ export const initQstTheme = (option?: ThemeOption) => {
 
   // set a theme in theme list as current enabled theme
   setThemeClassByIndex(option && option.initialThemeIndex ? option.initialThemeIndex : 0);
+
+  if (currentThemeOption.autoResetStyleInjection) {
+    autoStyleInjection();
+  }
 };
 
 /**
@@ -184,6 +192,38 @@ export const resetThemeStyleInjection = () => {
     head.removeChild(themeEl);
     head.append(themeEl);
   }
+};
+
+/** 自动重置样式注入功能：监控<head>中的<style>样式顺序，如果新增样式标签，自动将主题样式重置到最底部，保证主题样式的覆盖作用 */
+export const autoStyleInjection = () => {
+  const headEl = document.head;
+
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        // console.log('A child node has been added or removed.');
+        const nodes = mutation.addedNodes;
+        let needReinject = false;
+        nodes.forEach((node) => {
+          const nodeEl = node as HTMLElement;
+          // console.log(document.title + 'added node::::', node, node.nodeType, nodeEl.tagName);
+          if (
+            node.nodeType === Node.ELEMENT_NODE &&
+            nodeEl.tagName.toLowerCase() === 'style' &&
+            nodeEl.id !== currentThemeOption.styleTagId
+          ) {
+            // 如果当前新增node为<style>节点，且不是主题样式<style>
+            needReinject = true;
+          }
+        });
+        if (needReinject) {
+          resetThemeStyleInjection();
+        }
+      }
+    }
+  });
+
+  observer.observe(headEl, { childList: true });
 };
 
 /**
@@ -256,6 +296,9 @@ const generateThemeStyle = ({
       const cssVarName =
         valKey === 'DEFAULT' ? `${namespace}-${configKey}` : `${namespace}-${configKey}-${valKey}`;
       styleStr += `${cssVarName}: ${oneConfig[valKey as keyof typeof oneConfig]}; `;
+      if (cssVarName.toLowerCase().includes('color')) {
+        styleStr += `${cssVarName}-rgb: ${toRgb(oneConfig[valKey as keyof typeof oneConfig])}; `;
+      }
       if (configKey === ThemeCategory.Color) {
         Object.keys(MixModeEnum).forEach((mixmode) => {
           for (let i = 1; i < 10; i++) {
