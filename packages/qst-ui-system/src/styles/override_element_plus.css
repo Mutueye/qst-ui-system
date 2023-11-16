@@ -2,8 +2,8 @@
   element-plus相关样式覆盖，主要是把原组件中一些固定值的样式关联到css变量上，使element-plus组件更符合设计师定制的UI规范
 */
 
-/** html内定义变量，覆盖掉:root和:host内的element-plus变量定义 */
-html {
+/** body内定义变量，覆盖掉:root和:host内的element-plus变量定义 */
+body {
   --el-menu-bg-color: transparent;
   --el-menu-base-level-padding: var(--el-spacing);
   --el-menu-level-padding: var(--el-spacing-sm);
