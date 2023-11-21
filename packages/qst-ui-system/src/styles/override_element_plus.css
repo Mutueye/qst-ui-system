@@ -41,11 +41,9 @@ body {
   --el-svg-monochrome-grey: var(--el-border-color);
 }
 
-.dark {
-  body {
-    --el-mask-color: rgb(0 0 0 / 80%);
-    --el-mask-color-extra-light: rgb(0 0 0 / 30%);
-  }
+html.dark body {
+  --el-mask-color: rgb(0 0 0 / 80%);
+  --el-mask-color-extra-light: rgb(0 0 0 / 30%);
 }
 
 /* 使element按钮能够根据component-size的值来变更大小 */
