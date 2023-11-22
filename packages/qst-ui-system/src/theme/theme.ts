@@ -142,7 +142,7 @@ export interface ThemeOption {
   /** 注入<head>内的样式id，默认qst_theme */
   styleTagId?: string;
   /** 开启自动重置样式注入功能：监控<head>中的样式顺序，如果新增样式标签，自动将主题样式重置到最底部，保证主题样式的覆盖作用，默认true */
-  autoResetStyleInjection: boolean;
+  autoResetStyleInjection?: boolean;
 }
 
 const defaultThemeOption: ThemeOption = {
@@ -230,7 +230,10 @@ export const autoStyleInjection = () => {
  * 在header中插入style标签，生成根据传入的option生成的样式
  * @param option {ThemeOption} UI主题选项
  */
-export const injectThemeStyle = () => {
+export const injectThemeStyle = (option?: ThemeOption) => {
+  if (option) {
+    Object.assign(currentThemeOption, option);
+  }
   // clear theme list
   currentThemeList.length = 0;
   // set current theme list
