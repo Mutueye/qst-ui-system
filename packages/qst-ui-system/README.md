@@ -31,45 +31,46 @@ QST 前端 UI 基础库：
 前端：
 
 1. 在项目入口(main.js/main.ts)调用`initQstTheme()`初始化主题样式，引入设计端定制好的主题(不传则使用默认主题列表)
-    ```js
-    import { initQstTheme } from 'qst-ui-system';
-    // 初始化qst主题，不传参数使用默认配置
-    initQstTheme();
 
-    // 类型定义
-    export declare const initQstTheme: (option?: ThemeOption) => void;
+   ```js
+   import { initQstTheme } from 'qst-ui-system';
+   // 初始化qst主题，不传参数使用默认配置
+   initQstTheme();
 
-    /** 主题选项 */
-    export interface ThemeOption {
-      /** 主题css变量命名空间 默认--el */
-      namespace?: string;
-      /** 主题列表 */
-      themeList?: UITheme[];
-      /** 主题样式设置完成后的回调函数 */
-      onStylesSet?: () => void;
-      /** 是否包含css重置样式(reset/normalize) 默认是 */
-      cssReset?: boolean;
-      /** 需要适配的组件库(进行样式覆盖/主题定制)  */
-      uiLibs?: UILib | UILib[];
-      /** 初始主题序号, 默认为主题列表中第一个主题 */
-      initialThemeIndex?: number;
-    }
-    ```
+   // 类型定义
+   export declare const initQstTheme: (option?: ThemeOption) => void;
+
+   /** 主题选项 */
+   export interface ThemeOption {
+     /** 主题css变量命名空间 默认--el */
+     namespace?: string;
+     /** 主题列表 */
+     themeList?: UITheme[];
+     /** 主题样式设置完成后的回调函数 */
+     onStylesSet?: () => void;
+     /** 是否包含css重置样式(reset/normalize) 默认是 */
+     cssReset?: boolean;
+     /** 需要适配的组件库(进行样式覆盖/主题定制)  */
+     uiLibs?: UILib | UILib[];
+     /** 初始主题序号, 默认为主题列表中第一个主题 */
+     initialThemeIndex?: number;
+   }
+   ```
 
 2. 如果使用 element-plus 组件库，则 element 组件自动适配引入的主题配置；其他组件库需要额外的步骤(WIP)
 
 3. 使用 css 框架(比如 unocss)，可以方便的调用主题配置进行样式编写(需要在相应的配置文件中引入主题配置 WIP)
 
-    ```js
-    import { generateUnocssTheme } from 'qst-ui-system';
-    // unocss配置
-    {
-      ...
-      presets: [...],
-      safelist: [...],
-      transformers: [...]
-      // 生成主题配置 参数为namespace，默认'--el'
-      theme: generateUnocssTheme('--el'),
-      ...
-    }
-    ```
+   ```js
+   import { generateUnocssTheme } from 'qst-ui-system';
+   // unocss配置
+   {
+     ...
+     presets: [...],
+     safelist: [...],
+     transformers: [...]
+     // 生成主题配置 参数为namespace，默认'--el'
+     theme: generateUnocssTheme('--el'),
+     ...
+   }
+   ```
