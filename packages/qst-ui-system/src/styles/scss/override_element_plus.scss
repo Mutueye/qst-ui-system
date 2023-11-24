@@ -41,7 +41,7 @@ html {
     --el-border: var(--el-border-width) var(--el-border-style) var(--el-border-color);
     --el-svg-monochrome-grey: var(--el-border-color);
   }
-  .dark {
+  &.dark {
     body {
       --el-mask-color: rgb(0 0 0 / 80%);
       --el-mask-color-extra-light: rgb(0 0 0 / 30%);
