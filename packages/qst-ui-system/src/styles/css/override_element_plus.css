@@ -78,6 +78,9 @@ html.dark body {
 .el-button.is-text:active {
   color: var(--el-button-text-color);
 }
+.el-button.is-text:not(.is-disabled).is-has-bg:focus {
+  background-color: var(--el-fill-color-light);
+}
 
 /* el-dialog圆角关联到border-radius-base */
 .el-dialog {

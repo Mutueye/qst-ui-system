@@ -143,11 +143,11 @@ textarea {
 .clearfix::after {
   display: block;
   clear: both;
-  content: ' ';
+  content: " ";
 }
 
 html {
-  font-family: 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', SimSun, Arial, sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", SimSun, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
