@@ -98,15 +98,15 @@ export const defaultThemeList: UITheme[] = [
         'bg-color': {
           DEFAULT: '#28303d',
           page: '#1b2431',
-          secondary: '#171f2b',
+          secondary: '#121B27',
         },
         'border-color': {
-          'extra-light': '#313a47',
-          lighter: '#3a4554',
-          light: '#444f5e',
-          DEFAULT: '#576273',
-          dark: '#677282',
-          darker: '#707b8c',
+          'extra-light': '#212833',
+          lighter: '#313a47',
+          light: '#3a4554',
+          DEFAULT: '#444f5e',
+          dark: '#576273',
+          darker: '#677282',
         },
         'fill-color': {
           blank: 'transparent',
@@ -316,12 +316,12 @@ export const defaultThemeList: UITheme[] = [
     },
   },
   {
-    name: 'antd',
+    name: 'purple',
     config: {
       light: {
         color: {
-          primary: '#1890ff',
-          success: '#52c41a',
+          primary: '#7955FC',
+          success: '#18D654',
           warning: '#faad14',
           danger: '#f5222d',
           info: '#8c8c8c',
@@ -335,8 +335,8 @@ export const defaultThemeList: UITheme[] = [
         },
         'bg-color': {
           DEFAULT: '#ffffff',
-          page: '#f7f8fd',
-          secondary: '#eef0f8',
+          page: '#F6F5F7',
+          secondary: '#F2F1F3',
         },
         'border-color': {
           'extra-light': '#f2f6fc',
@@ -358,10 +358,10 @@ export const defaultThemeList: UITheme[] = [
         },
         'extra-color': {},
         'border-radius': {
-          small: '2px',
-          base: '4px',
-          large: '6px',
-          huge: '8px',
+          small: '4px',
+          base: '6px',
+          large: '8px',
+          huge: '10px',
           round: '20px',
           circle: '100%',
         },
@@ -396,8 +396,8 @@ export const defaultThemeList: UITheme[] = [
       },
       dark: {
         color: {
-          primary: '#1890ff',
-          success: '#52c41a',
+          primary: '#7955FC',
+          success: '#18D654',
           warning: '#faad14',
           danger: '#f5222d',
           info: '#8c8c8c',
@@ -410,17 +410,17 @@ export const defaultThemeList: UITheme[] = [
           disabled: '#6c6e72',
         },
         'bg-color': {
-          DEFAULT: '#28303d',
-          page: '#1b2431',
-          secondary: '#171f2b',
+          DEFAULT: '#202024',
+          page: '#1C1A22',
+          secondary: '#0F0E13',
         },
         'border-color': {
-          'extra-light': '#313a47',
-          lighter: '#3a4554',
-          light: '#444f5e',
-          DEFAULT: '#576273',
-          dark: '#677282',
-          darker: '#707b8c',
+          'extra-light': '#212833',
+          lighter: '#313a47',
+          light: '#3a4554',
+          DEFAULT: '#444f5e',
+          dark: '#576273',
+          darker: '#677282',
         },
         'fill-color': {
           reverse: '#ffffff',
@@ -434,10 +434,10 @@ export const defaultThemeList: UITheme[] = [
         },
         'extra-color': {},
         'border-radius': {
-          small: '2px',
-          base: '4px',
-          large: '6px',
-          huge: '8px',
+          small: '4px',
+          base: '6px',
+          large: '8px',
+          huge: '10px',
           round: '20px',
           circle: '100%',
         },
