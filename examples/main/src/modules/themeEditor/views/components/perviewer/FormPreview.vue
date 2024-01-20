@@ -5,8 +5,15 @@
     :rules="rules"
     label-width="120px"
     class="demo-ruleForm"
-    :size="formSize"
+    :size="ruleForm.size"
     status-icon>
+    <el-form-item label="表单大小" prop="size">
+      <el-radio-group v-model="ruleForm.size">
+        <el-radio label="small" />
+        <el-radio label="default" />
+        <el-radio label="large" />
+      </el-radio-group>
+    </el-form-item>
     <el-form-item label="Activity name" prop="name">
       <el-input v-model="ruleForm.name" />
     </el-form-item>
@@ -74,9 +81,22 @@
   import { reactive, ref } from 'vue';
   import type { FormInstance, FormRules } from 'element-plus';
 
-  const formSize = ref<'large' | 'default' | 'small'>('default');
+  type FormSize = 'large' | 'default' | 'small';
+
   const ruleFormRef = ref<FormInstance>();
-  const ruleForm = reactive({
+  const ruleForm = reactive<{
+    size: FormSize,
+    name: string,
+    region: string,
+    count: string,
+    date1: string,
+    date2: string,
+    delivery: boolean,
+    type: string[],
+    resource: string,
+    desc: string
+  }>({
+    size: 'default',
     name: 'Hello',
     region: '',
     count: '',

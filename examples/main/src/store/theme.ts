@@ -26,6 +26,8 @@ export const useThemeStore = defineStore('persist', {
         initQstTheme({
           themeList: themeData.themeList,
         });
+      } else {
+        initQstTheme()
       }
     } else {
       initQstTheme();
