@@ -25,5 +25,5 @@ module.exports = {
     'scss/selector-no-redundant-nesting-selector': true,
     'declaration-empty-line-before': null,
   },
-  ignoreFiles: ['dist/**/*', 'docs/**/*'],
+  ignoreFiles: ['dist/**/*', 'docs/**/*', 'src/styles/css'],
 };
