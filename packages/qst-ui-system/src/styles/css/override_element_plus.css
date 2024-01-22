@@ -129,6 +129,19 @@ html.dark body {
   font-size: var(--el-font-size-medium);
 }
 
+.el-select .el-select__wrapper {
+  min-height: var(--el-component-size);
+  font-size: var(--el-font-size-base);
+}
+.el-select.el-select--small .el-select__wrapper {
+  min-height: var(--el-component-size-small);
+  font-size: var(--el-font-size-small);
+}
+.el-select.el-select--large .el-select__wrapper {
+  min-height: var(--el-component-size-large);
+  font-size: var(--el-font-size-medium);
+}
+
 /* el-radio高度适配多种组件尺寸 */
 .el-radio {
   height: var(--el-component-size);
