@@ -72,6 +72,9 @@ html.dark body {
   background-color: var(--el-button-active-bg-color);
   border-color: var(--el-button-active-border-color);
 }
+.el-button.is-link {
+  padding: 2px;
+}
 .el-button.is-link:focus {
   color: var(--el-button-text-color);
 }

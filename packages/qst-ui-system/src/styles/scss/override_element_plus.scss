@@ -78,8 +78,11 @@ html {
     background-color: var(--el-button-active-bg-color);
     border-color: var(--el-button-active-border-color);
   }
-  &.is-link:focus {
-    color: var(--el-button-text-color);
+  &.is-link {
+    padding: 2px;
+    &:focus {
+      color: var(--el-button-text-color);
+    }
   }
   &.is-text:active {
     color: var(--el-button-text-color);
