@@ -4,7 +4,7 @@ module.exports = {
   bracketSpacing: true,
   bracketSameLine: true,
   singleQuote: true,
-  trailingComma: 'all',
+  trailingComma: 'es5',
   arrowParens: 'always',
   printWidth: 100,
   htmlWhitespaceSensitivity: 'ignore',
