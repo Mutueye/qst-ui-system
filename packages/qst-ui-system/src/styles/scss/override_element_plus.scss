@@ -95,13 +95,15 @@ html {
 /* el-dialog圆角关联到border-radius-base */
 .el-dialog {
   --el-dialog-border-radius: var(--el-border-radius-base);
+  --el-dialog-padding-primary: var(--el-spacing-md, 20px);
   .el-dialog__header {
     margin-right: 0 !important;
   }
   /* el-dialog内边距关联到space-md */
-  .el-dialog__body {
-    padding: var(--el-spacing-md);
-  }
+  // 2.6.x el-dialog__body不再需要内边距
+  // .el-dialog__body {
+  //   padding: var(--el-spacing-md);
+  // }
 }
 
 /* 关联弹窗圆角到border-radius-base变量 */
@@ -113,7 +115,7 @@ html {
   /* --el-messagebox-content-font-size: var(--el-font-size-base); */
   /* --el-messagebox-content-color: var(--el-text-color-regular); */
   /* --el-messagebox-error-font-size: 12px; */
-  /* --el-messagebox-padding-primary: 15px; */
+  --el-messagebox-padding-primary: var(--el-spacing-md, 20px);
 }
 
 /* input-number靠右的增减按钮适配多种组件尺寸 */

@@ -250,9 +250,9 @@ export const injectThemeStyle = (option?: ThemeOption) => {
         mode: mode as DayNightModeEnum,
       });
       if ((mode as DayNightModeEnum) === DayNightModeEnum.light) {
-        styleStr += `.${theme.name} { ${themeStyleStr} }`;
+        styleStr += `.${theme.name} { color-scheme: light; ${themeStyleStr} }`;
       } else {
-        styleStr += `.${theme.name}.${mode} { ${themeStyleStr} } .${mode} { .${theme.name} { ${themeStyleStr} } }`;
+        styleStr += `.${theme.name}.${mode} { color-scheme: dark; ${themeStyleStr} } .${mode} { .${theme.name} { color-scheme: dark; ${themeStyleStr} } }`;
       }
     });
   });
@@ -309,8 +309,8 @@ const generateThemeStyle = ({
               mix(
                 oneConfig[valKey as keyof typeof oneConfig],
                 mixModeBaseColors[mode][mixmode as MixModeEnum],
-                i * 0.1,
-              ),
+                i * 0.1
+              )
             )}; `;
           }
         });
