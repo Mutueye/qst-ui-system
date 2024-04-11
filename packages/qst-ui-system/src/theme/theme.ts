@@ -366,15 +366,15 @@ export const setThemeClassByName = (themeName: string, targetEl?: HTMLElement) =
 
 /**
  * 给指定的Dom元素切换日/夜模式样式
- * @param {boolean} isDark 当前是否夜间模式
+ * @param {DayNightModeEnum} mode 要切换到的模式
  * @param {HTMLElement} targetEl 目标dom元素
  */
-export const toggleDayNightMode = (isDark: boolean, targetEl?: HTMLElement) => {
+export const toggleDayNightMode = (mode: DayNightModeEnum, targetEl?: HTMLElement) => {
   // 如果不指定targetEl，则默认在html标签上设置样式class
   const htmlEl = targetEl ? targetEl : document.getElementsByTagName('html')[0];
-  if (isDark && htmlEl.classList.contains(DayNightModeEnum.dark)) {
-    htmlEl.classList.remove(DayNightModeEnum.dark);
-  } else if (!isDark && !htmlEl.classList.contains(DayNightModeEnum.dark)) {
+  if (mode === DayNightModeEnum.dark && !htmlEl.classList.contains(DayNightModeEnum.dark)) {
     htmlEl.classList.add(DayNightModeEnum.dark);
+  } else if (mode === DayNightModeEnum.light && htmlEl.classList.contains(DayNightModeEnum.dark)) {
+    htmlEl.classList.remove(DayNightModeEnum.dark);
   }
 };
