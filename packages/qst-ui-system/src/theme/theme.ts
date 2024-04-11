@@ -332,10 +332,10 @@ const generateThemeStyle = ({
  * @param themeIndex {number} 主题列表中的序号
  * @returns void
  */
-export const setThemeClassByIndex = (themeIndex: number) => {
+export const setThemeClassByIndex = (themeIndex: number, targetEl?: HTMLElement) => {
   // set theme class name on "html" tag
   if (themeIndex > currentThemeList.length - 1) return;
-  const htmlEl = document.getElementsByTagName('html')[0];
+  const htmlEl = targetEl ? targetEl : document.getElementsByTagName('html')[0];
   const targetThemeName = currentThemeList[themeIndex].name;
   currentThemeList.forEach((theme) => {
     // delete previous theme classes
@@ -354,12 +354,27 @@ export const setThemeClassByIndex = (themeIndex: number) => {
  * @param themeName {string} 主题名称
  * @returns boolean 设置成功返回true，否则返回false
  */
-export const setThemeClassByName = (themeName: string) => {
+export const setThemeClassByName = (themeName: string, targetEl?: HTMLElement) => {
   const index = currentThemeList.findIndex((theme) => theme.name === themeName);
   if (index !== -1) {
-    setThemeClassByIndex(index);
+    setThemeClassByIndex(index, targetEl);
     return true;
   } else {
     return false;
+  }
+};
+
+/**
+ * 给指定的Dom元素切换日/夜模式样式
+ * @param {boolean} isDark 当前是否夜间模式
+ * @param {HTMLElement} targetEl 目标dom元素
+ */
+export const toggleDayNightMode = (isDark: boolean, targetEl?: HTMLElement) => {
+  // 如果不指定targetEl，则默认在html标签上设置样式class
+  const htmlEl = targetEl ? targetEl : document.getElementsByTagName('html')[0];
+  if (isDark && htmlEl.classList.contains(DayNightModeEnum.dark)) {
+    htmlEl.classList.remove(DayNightModeEnum.dark);
+  } else if (!isDark && !htmlEl.classList.contains(DayNightModeEnum.dark)) {
+    htmlEl.classList.add(DayNightModeEnum.dark);
   }
 };
