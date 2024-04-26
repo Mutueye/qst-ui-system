@@ -367,7 +367,7 @@ export const setThemeClassByName = (themeName: string, targetEl?: HTMLElement) =
 /**
  * 给指定的Dom元素切换日/夜模式样式
  * @param {DayNightModeEnum} mode 要切换到的模式
- * @param {HTMLElement} targetEl 目标dom元素
+ * @param {HTMLElement} targetEl 目标dom元素，通常不传默认为html元素，即给整个页面切换模式
  */
 export const toggleDayNightMode = (mode: DayNightModeEnum, targetEl?: HTMLElement) => {
   // 如果不指定targetEl，则默认在html标签上设置样式class

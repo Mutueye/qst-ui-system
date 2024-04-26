@@ -2,6 +2,10 @@
   element-plus相关样式覆盖，主要是把原组件中一些固定值的样式关联到css变量上，使element-plus组件更符合设计师定制的UI规范
 */
 
+/**
+  TODO 读取ThemeOption的namespace替换'--el'前缀，保证namespace全局可定制
+*/
+
 /** body内定义变量，覆盖掉:root和:host内的element-plus变量定义，兼容微前端子项目 */
 html {
   body {
@@ -12,8 +16,8 @@ html {
     --el-menu-text-color: var(--el-text-color-primary);
     --el-menu-hover-text-color: var(--el-color-primary);
     --el-menu-hover-bg-color: var(--el-color-primary-light-9);
-    --el-menu-item-height: calc(var(--el-component-size-small) * 2);
-    --el-menu-sub-item-height: calc(var(--el-menu-item-height) - 6px);
+    --el-menu-item-height: calc(var(--el-component-size-small) * 2 + 6px);
+    --el-menu-sub-item-height: var(--el-menu-item-height);
     --el-menu-horizontal-height: calc(var(--el-component-size) * 2);
     --el-menu-horizontal-sub-item-height: var(--el-component-size);
     --el-menu-item-font-size: var(--el-font-size-base);
