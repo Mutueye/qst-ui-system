@@ -4,6 +4,8 @@ import normalizeStyles from '../styles/css/normalize.css';
 import overrideElementPlusStyles from '../styles/css/override_element_plus.css';
 import { toRgb } from './utils';
 
+// TODO vue QstThemeProvider
+
 // theme css variable categories
 export enum ThemeCategory {
   // 主题色
@@ -272,13 +274,13 @@ const generateResetStyles = (option: ThemeOption) => {
     cssReset ? normalizeStyles : ''
   } body { font-size: var(${namespace}-font-size-base); }`;
   if (uiLibsList.includes('element-plus')) {
-    styleStr += (overrideElementPlusStyles as string).replace('--el-', `${namespace}-`);
+    styleStr += overrideElementPlusStyles;
   } else {
     // TODO 更多UI组件库的定制样式
   }
 
   styleStr += 'html { --el-color-white: #ffffff; --el-color-black: #000000; }';
-  return styleStr;
+  return styleStr.replace('--el-', `${namespace}-`);
 };
 
 const generateThemeStyle = ({

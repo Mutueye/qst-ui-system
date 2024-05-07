@@ -24,7 +24,7 @@
     "access": "public"
   },
   "scripts": {
-    "build:style": "sass src/styles/scss:src/styles/css",
+    "build:style": "sass src/styles/scss:src/styles/css --no-source-map",
     "build": "pnpm build:style && rimraf dist && rollup -c",
     "watch": "pnpm build:style && rimraf dist && rollup -cw",
     "lint": "npx lint-staged",
