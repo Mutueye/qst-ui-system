@@ -264,6 +264,24 @@ export const injectThemeStyle = (option?: ThemeOption) => {
   }
 };
 
+/**
+ * 更新主题色，并重新注入样式
+ * @param themeName 主题名称
+ * @param mode 模式 light / dark
+ * @param color 主题色 Record<"primary" | "success" | "warning" | "danger" | "info", string>
+ */
+export const updateThemeColor = (
+  themeName: string,
+  mode: DayNightModeEnum,
+  color: Record<(typeof cssVarCodex)['color'][number], string>
+) => {
+  const theme = currentThemeList.find((item) => item.name === themeName);
+  if (theme && theme.config[mode]) {
+    Object.assign(theme.config[mode].color, color);
+  }
+  injectThemeStyle();
+};
+
 /** 生成初始化样式&组件库(比如element-plus）的全局覆盖样式 */
 const generateResetStyles = (option: ThemeOption) => {
   const { namespace, cssReset, uiLibs } = option;
