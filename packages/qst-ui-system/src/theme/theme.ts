@@ -273,7 +273,7 @@ export const injectThemeStyle = (option?: ThemeOption) => {
 export const updateThemeColor = (
   themeName: string,
   mode: DayNightModeEnum,
-  color: Record<(typeof cssVarCodex)['color'][number], string>
+  color: Partial<Record<(typeof cssVarCodex)['color'][number], string>>
 ) => {
   const theme = currentThemeList.find((item) => item.name === themeName);
   if (theme && theme.config[mode]) {
