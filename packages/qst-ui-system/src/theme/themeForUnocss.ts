@@ -145,7 +145,7 @@ export const generateExtraColors = (option: {
   // TODO
   const result: Record<keyof typeof configs, string> = {};
   Object.keys(configs).forEach((key) => {
-    result[key] = `var(${namespace}-${configkey}-${configs[key]})`;
+    result[key] = `var(${namespace}-${configkey}-${key})`;
   });
   return result;
 };
