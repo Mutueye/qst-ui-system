@@ -136,9 +136,26 @@ const getDefaultSizes = (namespace: string) => {
   };
 };
 
+export const generateExtraColors = (option: {
+  namespace?: string;
+  configkey?: string;
+  configs: Record<string, string>;
+}) => {
+  const { namespace = '--el', configkey = 'extra-color', configs } = option;
+  // TODO
+  const result: Record<keyof typeof configs, string> = {};
+  Object.keys(configs).forEach((key) => {
+    result[key] = `var(${namespace}-${configkey}-${configs[key]})`;
+  });
+  return result;
+};
+
 // theme配置示例。默认theme配置详见unocss源码：
 // https://github.com/unocss/unocss/tree/main/packages/preset-mini/src/_theme
-export const generateUnocssTheme = (namespace = '--el') => {
+export const generateUnocssTheme = (
+  namespace = '--el',
+  extraColorConfig?: Record<string, string>
+) => {
   const defaultSizes = getDefaultSizes(namespace) as Record<string, string>;
   return {
     width: defaultSizes,
@@ -194,7 +211,7 @@ export const generateUnocssTheme = (namespace = '--el') => {
       bg: generateCssVarFromConfig({ key: 'bg-color', namespace }),
       border: generateCssVarFromConfig({ key: 'border-color', namespace }),
       fill: generateCssVarFromConfig({ key: 'fill-color', namespace }),
-      extra: generateCssVarFromConfig({ key: 'extra-color', namespace }),
+      extra: extraColorConfig ? generateExtraColors({ configs: extraColorConfig, namespace }) : {},
     },
     // fontFamily: {
     //   main: 'PingFang SC, Microsoft YaHei, Hiragino Sans GB, SimSun, sans-serif',
