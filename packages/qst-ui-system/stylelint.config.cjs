@@ -1,29 +1,35 @@
+/** @type {import('stylelint').Config} */
 module.exports = {
-  plugins: ['stylelint-scss'],
+  // 继承推荐规范配置
   extends: [
-    'stylelint-config-standard-scss', // configure for SCSS
-    'stylelint-config-recess-order', // use the recess order for properties
-    'stylelint-config-css-modules', // configure for CSS Modules methodology
+    'stylelint-config-standard',
+    'stylelint-config-recommended-scss',
+    'stylelint-config-recommended-vue/scss',
+    'stylelint-config-html/vue',
+    'stylelint-config-recess-order',
   ],
+  // 指定不同文件对应的解析器
+  overrides: [
+    {
+      files: ['**/*.{vue,html}'],
+      customSyntax: 'postcss-html',
+    },
+    {
+      files: ['**/*.{css,scss}'],
+      customSyntax: 'postcss-scss',
+    },
+  ],
+  // 自定义规则
   rules: {
-    'rule-empty-line-before': null,
-    'comment-empty-line-before': null,
-    'color-hex-length': null,
-    'custom-property-empty-line-before': null,
-    'selector-class-pattern': null,
-    'value-keyword-case': null,
+    // 允许 global 、export 、v-deep等伪类
+    'selector-pseudo-class-no-unknown': [
+      true,
+      {
+        ignorePseudoClasses: ['global', 'export', 'v-deep', 'deep'],
+      },
+    ],
     'no-duplicate-selectors': null,
-    // 'at-rule-no-unknown': [true, { ignoreAtRules: ['apply'] }],
-    'at-rule-no-unknown': null,
-    'scss/at-rule-no-unknown': true,
-    // 'function-no-unknown': [true, { ignoreFunctions: ['theme'] }],
-    'function-no-unknown': null,
-    'scss/function-no-unknown': true,
-    'scss/dollar-variable-pattern': null,
-    'scss/dollar-variable-empty-line-before': null,
-    'scss/double-slash-comment-empty-line-before': null,
-    'scss/selector-no-redundant-nesting-selector': true,
-    'declaration-empty-line-before': null,
+    'declaration-property-value-no-unknown': null,
   },
   ignoreFiles: ['dist/**/*', 'docs/**/*', 'src/styles/css'],
 };
