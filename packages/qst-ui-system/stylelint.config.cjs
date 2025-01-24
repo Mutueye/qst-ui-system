@@ -1,5 +1,6 @@
 /** @type {import('stylelint').Config} */
 module.exports = {
+  ignoreFiles: ['./dist/**/*', './docs/**/*', './src/styles/css/**/*'],
   // 继承推荐规范配置
   extends: [
     'stylelint-config-standard',
@@ -31,5 +32,4 @@ module.exports = {
     'no-duplicate-selectors': null,
     'declaration-property-value-no-unknown': null,
   },
-  ignoreFiles: ['dist/**/*', 'docs/**/*', 'src/styles/css'],
 };

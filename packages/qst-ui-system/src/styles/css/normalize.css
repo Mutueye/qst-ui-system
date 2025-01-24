@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 /*****************
  初始化css样式 
  *****************/
@@ -121,17 +120,14 @@ table {
   border-spacing: 0;
   border-collapse: separate;
 }
-
 table th {
   font-weight: bold;
   vertical-align: bottom;
 }
-
 table td {
   font-weight: normal;
   vertical-align: top;
 }
-
 table td img {
   vertical-align: top;
 }
@@ -145,8 +141,8 @@ textarea {
 }
 
 .clearfix::after {
-  clear: both;
   display: block;
+  clear: both;
   content: " ";
 }
 
