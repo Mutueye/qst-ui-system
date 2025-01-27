@@ -1,4 +1,4 @@
-import { cssVarCodex } from './theme';
+import { cssVarCodex } from './types';
 
 // css变量配置项类型
 export type CssVarConfigType = Record<string, (string | CssVarConfigType)[]>;
@@ -152,10 +152,7 @@ export const generateExtraColors = (option: {
 
 // theme配置示例。默认theme配置详见unocss源码：
 // https://github.com/unocss/unocss/tree/main/packages/preset-mini/src/_theme
-export const generateUnocssTheme = (
-  namespace = '--el',
-  extraColorConfig?: Record<string, string>
-) => {
+export const generateUnocssTheme = (namespace = '--el', extraColorConfig?: Record<string, string>) => {
   const defaultSizes = getDefaultSizes(namespace) as Record<string, string>;
   return {
     width: defaultSizes,

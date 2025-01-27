@@ -46,7 +46,10 @@
       const mainColors = themeData.value.config[DayNightModeEnum.light].color;
       if (mainColors) {
         Object.keys(mainColors).forEach((key) => {
-          list.push(mainColors[key as keyof typeof mainColors]);
+          const color = mainColors[key as keyof typeof mainColors];
+          if (color) {
+            list.push(color);
+          }
         });
       }
     }

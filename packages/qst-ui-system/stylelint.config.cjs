@@ -31,5 +31,6 @@ module.exports = {
     ],
     'no-duplicate-selectors': null,
     'declaration-property-value-no-unknown': null,
+    'color-hex-length': null,
   },
 };

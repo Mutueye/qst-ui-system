@@ -1,4 +1,4 @@
-import type { UITheme } from './theme';
+import type { UITheme } from './types';
 
 export const defaultThemeList: UITheme[] = [
   {
@@ -7,22 +7,23 @@ export const defaultThemeList: UITheme[] = [
       light: {
         color: {
           primary: '#217aff',
+          secondary: '#217aff',
           success: '#12D678',
           warning: '#FFB115',
           danger: '#FF4D4F',
           info: '#96979C',
         },
         'text-color': {
-          primary: '#131b26',
-          regular: '#5f6165',
+          primary: '#131B26',
+          regular: '#5F6165',
           secondary: '#96979c',
-          placeholder: '#cacbd0',
-          disabled: '#cacbd0',
+          placeholder: '#CACBD0',
+          disabled: '#CACBD0',
         },
         'bg-color': {
-          DEFAULT: '#ffffff',
-          page: '#f7f8fd',
-          secondary: '#f3f5fb',
+          DEFAULT: '#FFFFFF',
+          page: '#F7F8Fd',
+          secondary: '#F3F5Fb',
         },
         'border-color': {
           exlighter: '#F6F7FA',
@@ -34,14 +35,14 @@ export const defaultThemeList: UITheme[] = [
           exdarker: '#BEC2CF',
         },
         'fill-color': {
-          blank: '#ffffff',
+          blank: '#FFFFFF',
           reverse: '#000000',
-          exlighter: '#fafcff',
+          exlighter: '#FAFCFF',
           lighter: '#f8fafc',
           light: '#f5f7fa',
           DEFAULT: '#f0f2f5',
-          dark: '#eeeeee',
-          darker: '#e6e8eb',
+          dark: '#EEEEEE',
+          darker: '#E6E8EB',
           exdarker: '#D9DDE3',
         },
         'extra-color': {},
@@ -85,6 +86,7 @@ export const defaultThemeList: UITheme[] = [
       dark: {
         color: {
           primary: '#217aff',
+          secondary: '#217aff',
           success: '#12D678',
           warning: '#FFB115',
           danger: '#FF4D4F',
@@ -168,6 +170,7 @@ export const defaultThemeList: UITheme[] = [
       light: {
         color: {
           primary: '#67aef7',
+          secondary: '#67aef7',
           success: '#62d65c',
           warning: '#f39800',
           danger: '#fc7373',
@@ -246,6 +249,7 @@ export const defaultThemeList: UITheme[] = [
       dark: {
         color: {
           primary: '#67aef7',
+          secondary: '#67aef7',
           success: '#62d65c',
           warning: '#f39800',
           danger: '#fc7373',
@@ -329,6 +333,7 @@ export const defaultThemeList: UITheme[] = [
       light: {
         color: {
           primary: '#7955FC',
+          secondary: '#7955FC',
           success: '#18D654',
           warning: '#faad14',
           danger: '#f5222d',
@@ -407,6 +412,7 @@ export const defaultThemeList: UITheme[] = [
       dark: {
         color: {
           primary: '#7955FC',
+          secondary: '#7955FC',
           success: '#18D654',
           warning: '#faad14',
           danger: '#f5222d',
