@@ -174,6 +174,7 @@ export const setThemeClassByIndex = (themeIndex: number, targetEl?: HTMLElement)
       htmlEl.classList.remove(theme.name);
     }
   });
+  currentThemeOption.currentThemeIndex = themeIndex;
   // add target theme class to html tag
   if (!htmlEl.classList.contains(targetThemeName)) {
     htmlEl.classList.add(targetThemeName);

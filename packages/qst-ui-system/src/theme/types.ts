@@ -89,6 +89,8 @@ export interface ThemeOption {
   uiLibs?: UILib | UILib[];
   /** 初始主题序号, 默认为主题列表中第一个主题 */
   initialThemeIndex?: number;
+  /** 当前主题序号 */
+  currentThemeIndex?: number;
   /** 注入<head>内的样式id，默认qst_theme */
   styleTagId?: string;
   /** 开启自动重置样式注入功能：监控<head>中的样式顺序，如果新增样式标签，自动将主题样式重置到最底部，保证主题样式的覆盖作用，默认true */
