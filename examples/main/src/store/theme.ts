@@ -5,7 +5,9 @@ import {
   defaultThemeList,
   setThemeClassByIndex,
   currentThemeList,
+  // generateThemeStyles,
   initQstTheme,
+  // currentThemeOption,
 } from '@itshixun/qst-ui-system';
 import { ElMessageBox } from 'element-plus';
 import { cloneDeep } from 'lodash-es';
@@ -20,6 +22,8 @@ const LSThemeKey = 'qst-theme';
 export const useThemeStore = defineStore('persist', {
   state: (): ThemeState => {
     const storedThemeData = localStorage.getItem(LSThemeKey);
+    // 使用下面的log查看qst-ui-system生成的样式
+    // console.log('themStyles::::1', generateThemeStyles(currentThemeOption));
     if (storedThemeData) {
       const themeData: ThemeState = JSON.parse(storedThemeData);
       if (themeData && themeData.themeList && themeData.themeList.length > 0) {
@@ -27,7 +31,7 @@ export const useThemeStore = defineStore('persist', {
           themeList: themeData.themeList,
         });
       } else {
-        initQstTheme()
+        initQstTheme();
       }
     } else {
       initQstTheme();

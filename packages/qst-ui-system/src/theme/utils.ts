@@ -1,5 +1,7 @@
 import { toRgba, mix, toHex } from 'color2k';
-import { DayNightModeEnum, ThemeCategory, MixModeEnum, ThemeConfig } from './types';
+import normalizeStyles from '../styles/css/normalize.css';
+import overrideElementPlusStyles from '../styles/css/override_element_plus.css';
+import { DayNightModeEnum, ThemeCategory, MixModeEnum, ThemeConfig, ThemeOption } from './types';
 
 /** 传入任何颜色，比如'#ff00ff' 或者'rgba(0, 0, 0, 1)' 等，返回rgb字符串：.eg: '255, 255, 255' */
 export const toRgb = (color: string) => {
@@ -71,4 +73,41 @@ export const generateCssVarList = ({
   styleStr = styleStr.concat(`${namespace}-bg-color-overlay: var(${namespace}-bg-color);\n`);
 
   return styleStr;
+};
+
+/** 生成初始化样式&组件库(比如element-plus）的全局覆盖样式 */
+export const generateResetStyles = (option: ThemeOption) => {
+  const { namespace, cssReset, uiLibs } = option;
+
+  const uiLibsList = typeof uiLibs === 'string' ? [uiLibs] : uiLibs;
+
+  let styleStr = `${cssReset ? normalizeStyles : ''} body { font-size: var(${namespace}-font-size-base); }`;
+  if (uiLibsList.includes('element-plus')) {
+    styleStr += overrideElementPlusStyles;
+  } else {
+    // TODO 更多UI组件库的定制样式
+  }
+
+  styleStr += 'html { --el-color-white: #ffffff; --el-color-black: #000000; }';
+  return styleStr.replace('--el-', `${namespace}-`);
+};
+
+export const generateThemeStyles = (option: ThemeOption) => {
+  let styleStr = '';
+  const { namespace, themeList } = option;
+  themeList.forEach((theme) => {
+    Object.keys(DayNightModeEnum).forEach((mode) => {
+      const themeStyleStr = generateCssVarList({
+        namespace,
+        themeConfig: theme.config[mode as DayNightModeEnum],
+        mode: mode as DayNightModeEnum,
+      });
+      if ((mode as DayNightModeEnum) === DayNightModeEnum.light) {
+        styleStr += `.${theme.name} { color-scheme: light; ${themeStyleStr} }`;
+      } else {
+        styleStr += `.${theme.name}.${mode} { color-scheme: dark; ${themeStyleStr} } .${mode} { .${theme.name} { color-scheme: dark; ${themeStyleStr} } }`;
+      }
+    });
+  });
+  return `${generateResetStyles(option)} ${styleStr}`;
 };
