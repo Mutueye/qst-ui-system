@@ -30,7 +30,7 @@ export const initQstTheme = (option?: ThemeOption) => {
   injectThemeStyle();
 
   // set a theme in theme list as current enabled theme
-  setThemeClassByIndex(option && option.initialThemeIndex ? option.initialThemeIndex : 0);
+  setThemeClassByIndex(option && option.initialThemeIndex ? option.initialThemeIndex : 0, currentThemeOption?.targetEl);
 
   if (currentThemeOption.autoResetStyleInjection) {
     autoStyleInjection();
@@ -131,8 +131,15 @@ export const updateThemeColor = (
 export const setThemeClassByIndex = (themeIndex: number, targetEl?: HTMLElement) => {
   // set theme class name on "html" tag
   if (themeIndex > currentThemeList.length - 1) return;
-  const htmlEl = targetEl ? targetEl : document.getElementsByTagName('html')[0];
+
+  const htmlEl = targetEl
+    ? targetEl
+    : currentThemeOption.targetEl
+      ? currentThemeOption.targetEl
+      : document.getElementsByTagName('html')[0];
+
   const targetThemeName = currentThemeList[themeIndex].name;
+
   currentThemeList.forEach((theme) => {
     // delete previous theme classes
     if (htmlEl.classList.contains(theme.name) && theme.name !== targetThemeName) {

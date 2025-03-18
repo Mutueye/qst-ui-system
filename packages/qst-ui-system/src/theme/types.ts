@@ -95,4 +95,6 @@ export interface ThemeOption {
   styleTagId?: string;
   /** 开启自动重置样式注入功能：监控<head>中的样式顺序，如果新增样式标签，自动将主题样式重置到最底部，保证主题样式的覆盖作用，默认true */
   autoResetStyleInjection?: boolean;
+  /** 添加主题样式class的目标元素，不传则默认添加主题类名到<html>标签上 */
+  targetEl?: HTMLElement | null;
 }

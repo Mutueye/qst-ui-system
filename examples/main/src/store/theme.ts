@@ -24,17 +24,19 @@ export const useThemeStore = defineStore('persist', {
     const storedThemeData = localStorage.getItem(LSThemeKey);
     // 使用下面的log查看qst-ui-system生成的样式
     // console.log('themStyles::::1', generateThemeStyles(currentThemeOption));
+    const targetEl = document.getElementById('app');
     if (storedThemeData) {
       const themeData: ThemeState = JSON.parse(storedThemeData);
       if (themeData && themeData.themeList && themeData.themeList.length > 0) {
         initQstTheme({
           themeList: themeData.themeList,
+          targetEl,
         });
       } else {
-        initQstTheme();
+        initQstTheme({ targetEl });
       }
     } else {
-      initQstTheme();
+      initQstTheme({ targetEl });
     }
 
     return {
