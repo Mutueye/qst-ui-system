@@ -98,7 +98,7 @@ export const generateResetStyles = (option: ThemeOption) => {
 };
 
 export const generateBaseStyles = (namespace: string, themeName: string) => {
-  return `${themeName} { font-size: var(${namespace}-font-size-base);  ${namespace}-color-white: #ffffff; ${namespace}-color-black: #000000; }`;
+  return `.${themeName} { font-size: var(${namespace}-font-size-base);  ${namespace}-color-white: #ffffff; ${namespace}-color-black: #000000; }`;
 };
 
 export const generateThemeStyles = (option: ThemeOption) => {
