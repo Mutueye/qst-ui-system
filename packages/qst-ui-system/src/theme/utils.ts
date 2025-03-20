@@ -68,9 +68,9 @@ export const generateCssVarList = ({
 
   // 关联冗余的element变量到已赋值的变量
   // --el-color-error = --el-color-danger;
-  styleStr = styleStr.concat(`${namespace}-color-error: var(${namespace}-color-danger);\n`);
+  styleStr = styleStr.concat(`${namespace}-color-error: var(${namespace}-color-danger);`);
   // --el-bg-color-overlay = --el-bg-color;
-  styleStr = styleStr.concat(`${namespace}-bg-color-overlay: var(${namespace}-bg-color);\n`);
+  styleStr = styleStr.concat(`${namespace}-bg-color-overlay: var(${namespace}-bg-color);`);
 
   return styleStr;
 };
@@ -81,15 +81,24 @@ export const generateResetStyles = (option: ThemeOption) => {
 
   const uiLibsList = typeof uiLibs === 'string' ? [uiLibs] : uiLibs;
 
-  let styleStr = `${cssReset ? normalizeStyles : ''} body { font-size: var(${namespace}-font-size-base); }`;
+  let styleStr = `${cssReset ? normalizeStyles : ''}`;
   if (uiLibsList.includes('element-plus')) {
     styleStr += overrideElementPlusStyles;
   } else {
     // TODO 更多UI组件库的定制样式
   }
 
-  styleStr += 'html { --el-color-white: #ffffff; --el-color-black: #000000; }';
-  return styleStr.replace('--el-', `${namespace}-`);
+  const themeNameList = option.themeList.map((theme) => theme.name);
+
+  styleStr = styleStr.replace('.theme-name-placeholder.dark', themeNameList.map((name) => `.${name}.dark`).join(','));
+  styleStr = styleStr.replace('.dark .theme-name-placeholde', themeNameList.map((name) => `.dark .${name}`).join(','));
+  styleStr = styleStr.replace('.theme-name-placeholder', themeNameList.map((name) => `.${name}`).join(','));
+
+  return styleStr;
+};
+
+export const generateBaseStyles = (namespace: string, themeName: string) => {
+  return `${themeName} { font-size: var(${namespace}-font-size-base);  ${namespace}-color-white: #ffffff; ${namespace}-color-black: #000000; }`;
 };
 
 export const generateThemeStyles = (option: ThemeOption) => {
@@ -107,6 +116,7 @@ export const generateThemeStyles = (option: ThemeOption) => {
       } else {
         styleStr += `.${theme.name}.${mode} { color-scheme: dark; ${themeStyleStr} } .${mode} { .${theme.name} { color-scheme: dark; ${themeStyleStr} } }`;
       }
+      styleStr += generateBaseStyles(namespace, theme.name);
     });
   });
   return `${generateResetStyles(option)} ${styleStr}`;

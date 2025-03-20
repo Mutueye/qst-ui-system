@@ -1,6 +1,6 @@
 {
   "name": "@itshixun/qst-ui-system",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "qst ui system",
   "author": "mutueye <mutuyueniao@gmail.com>",
   "license": "MIT",
@@ -74,7 +74,6 @@
     "typescript-eslint": "^8.21.0"
   },
   "lint-staged": {
-    "*.{vue,js,ts,jsx,tsx,md,json}": "eslint --fix",
-    "*.{scss,css,vue,html}": "stylelint --fix"
+    "*.{vue,js,ts,jsx,tsx,md,json}": "eslint --fix"
   }
 }
