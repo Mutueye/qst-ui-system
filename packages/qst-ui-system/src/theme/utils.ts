@@ -114,7 +114,7 @@ export const generateThemeStyles = (option: ThemeOption) => {
       if ((mode as DayNightModeEnum) === DayNightModeEnum.light) {
         styleStr += `.${theme.name} { color-scheme: light; ${themeStyleStr} }`;
       } else {
-        styleStr += `.${theme.name}.${mode} { color-scheme: dark; ${themeStyleStr} } .${mode} { .${theme.name} { color-scheme: dark; ${themeStyleStr} } }`;
+        styleStr += `.${theme.name}.${mode}, .${theme.name} .${namespace + '-' + mode} { color-scheme: dark; ${themeStyleStr} } .${mode} { .${theme.name} { color-scheme: dark; ${themeStyleStr} } }`;
       }
       styleStr += generateBaseStyles(namespace, theme.name);
     });
