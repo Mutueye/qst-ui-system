@@ -29,8 +29,17 @@ export const initQstTheme = (option?: ThemeOption) => {
   // inject theme css var styles to the style tag
   injectThemeStyle();
 
-  // set a theme in theme list as current enabled theme
-  setThemeClassByIndex(option && option.initialThemeIndex ? option.initialThemeIndex : 0, currentThemeOption?.targetEl);
+  if (currentThemeOption.targetEl && Array.isArray(currentThemeOption.targetEl)) {
+    currentThemeOption.targetEl.forEach((el) => {
+      setThemeClassByIndex(option && option.initialThemeIndex ? option.initialThemeIndex : 0, el);
+    });
+  } else {
+    // set a theme in theme list as current enabled theme
+    setThemeClassByIndex(
+      option && option.initialThemeIndex ? option.initialThemeIndex : 0,
+      currentThemeOption.targetEl as HTMLElement | null
+    );
+  }
 
   if (currentThemeOption.autoResetStyleInjection) {
     autoStyleInjection();
@@ -132,11 +141,11 @@ export const setThemeClassByIndex = (themeIndex: number, targetEl?: HTMLElement)
   // set theme class name on "html" tag
   if (themeIndex > currentThemeList.length - 1) return;
 
-  const htmlEl = targetEl
-    ? targetEl
-    : currentThemeOption.targetEl
-      ? currentThemeOption.targetEl
-      : document.getElementsByTagName('html')[0];
+  const defaultEl = Array.isArray(currentThemeOption.targetEl)
+    ? currentThemeOption.targetEl[0]
+    : currentThemeOption.targetEl;
+
+  const htmlEl = targetEl ? targetEl : defaultEl ? defaultEl : document.getElementsByTagName('html')[0];
 
   const targetThemeName = currentThemeList[themeIndex].name;
 
