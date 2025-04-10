@@ -141,24 +141,30 @@ export const setThemeClassByIndex = (themeIndex: number, targetEl?: HTMLElement)
   // set theme class name on "html" tag
   if (themeIndex > currentThemeList.length - 1) return;
 
-  const defaultEl = Array.isArray(currentThemeOption.targetEl)
-    ? currentThemeOption.targetEl[0]
-    : currentThemeOption.targetEl;
-
-  const htmlEl = targetEl ? targetEl : defaultEl ? defaultEl : document.getElementsByTagName('html')[0];
-
   const targetThemeName = currentThemeList[themeIndex].name;
 
-  currentThemeList.forEach((theme) => {
-    // delete previous theme classes
-    if (htmlEl.classList.contains(theme.name) && theme.name !== targetThemeName) {
-      htmlEl.classList.remove(theme.name);
+  if (targetEl) {
+    currentThemeList.forEach((theme) => {
+      // delete previous theme classes
+      if (targetEl.classList.contains(theme.name) && theme.name !== targetThemeName) {
+        targetEl.classList.remove(theme.name);
+      }
+    });
+    currentThemeOption.currentThemeIndex = themeIndex;
+    // add target theme class to html tag
+    if (!targetEl.classList.contains(targetThemeName)) {
+      targetEl.classList.add(targetThemeName);
     }
-  });
-  currentThemeOption.currentThemeIndex = themeIndex;
-  // add target theme class to html tag
-  if (!htmlEl.classList.contains(targetThemeName)) {
-    htmlEl.classList.add(targetThemeName);
+  } else {
+    if (Array.isArray(currentThemeOption.targetEl)) {
+      currentThemeOption.targetEl.forEach((el) => {
+        setThemeClassByIndex(themeIndex, el);
+      });
+    } else if (currentThemeOption.targetEl) {
+      setThemeClassByIndex(themeIndex, currentThemeOption.targetEl);
+    } else {
+      setThemeClassByIndex(themeIndex, document.getElementsByTagName('html')[0]);
+    }
   }
 };
 
@@ -183,11 +189,20 @@ export const setThemeClassByName = (themeName: string, targetEl?: HTMLElement) =
  * @param {HTMLElement} targetEl 目标dom元素，通常不传默认为html元素，即给整个页面切换模式
  */
 export const toggleDayNightMode = (mode: DayNightModeEnum, targetEl?: HTMLElement) => {
-  // 如果不指定targetEl，则默认在html标签上设置样式class
-  const htmlEl = targetEl ? targetEl : document.getElementsByTagName('html')[0];
-  if (mode === DayNightModeEnum.dark && !htmlEl.classList.contains(DayNightModeEnum.dark)) {
-    htmlEl.classList.add(DayNightModeEnum.dark);
-  } else if (mode === DayNightModeEnum.light && htmlEl.classList.contains(DayNightModeEnum.dark)) {
-    htmlEl.classList.remove(DayNightModeEnum.dark);
+  if (targetEl) {
+    if (mode === DayNightModeEnum.dark && !targetEl.classList.contains(DayNightModeEnum.dark)) {
+      targetEl.classList.add(DayNightModeEnum.dark);
+    } else if (mode === DayNightModeEnum.light && targetEl.classList.contains(DayNightModeEnum.dark)) {
+      targetEl.classList.remove(DayNightModeEnum.dark);
+    }
+  } else if (Array.isArray(currentThemeOption.targetEl)) {
+    currentThemeOption.targetEl.forEach((el) => {
+      toggleDayNightMode(mode, el);
+    });
+  } else if (currentThemeOption.targetEl) {
+    toggleDayNightMode(mode, currentThemeOption.targetEl);
+  } else {
+    // 如果不指定targetEl，则默认在html标签上设置样式class
+    toggleDayNightMode(mode, document.getElementsByTagName('html')[0]);
   }
 };
