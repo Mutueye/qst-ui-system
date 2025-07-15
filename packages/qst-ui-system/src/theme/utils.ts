@@ -91,7 +91,7 @@ export const generateResetStyles = (option: ThemeOption) => {
   const themeNameList = option.themeList.map((theme) => theme.name);
 
   styleStr = styleStr.replace('.theme-name-placeholder.dark', themeNameList.map((name) => `.${name}.dark`).join(','));
-  styleStr = styleStr.replace('.dark .theme-name-placeholde', themeNameList.map((name) => `.dark .${name}`).join(','));
+  styleStr = styleStr.replace('.dark .theme-name-placeholder', themeNameList.map((name) => `.dark .${name}`).join(','));
   styleStr = styleStr.replace('.theme-name-placeholder', themeNameList.map((name) => `.${name}`).join(','));
 
   return styleStr;
