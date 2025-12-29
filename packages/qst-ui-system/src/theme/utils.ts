@@ -112,9 +112,9 @@ export const generateThemeStyles = (option: ThemeOption) => {
         mode: mode as DayNightModeEnum,
       });
       if ((mode as DayNightModeEnum) === DayNightModeEnum.light) {
-        styleStr += `.${theme.name} { color-scheme: light; ${themeStyleStr} }`;
+        styleStr += `.${theme.name}, .${theme.name}.${mode}, .${theme.name} .${namespace + '-' + mode}, .${namespace + '-' + mode} .${theme.name} { color-scheme: light; ${themeStyleStr} }`;
       } else {
-        styleStr += `.${theme.name}.${mode}, .${theme.name} .${namespace + '-' + mode} { color-scheme: dark; ${themeStyleStr} } .${mode} { .${theme.name} { color-scheme: dark; ${themeStyleStr} } }`;
+        styleStr += `.${theme.name}.${mode}, .${theme.name} .${namespace + '-' + mode}, .${namespace + '-' + mode} .${theme.name} { color-scheme: dark; ${themeStyleStr} }`;
       }
       styleStr += generateBaseStyles(namespace, theme.name);
     });
