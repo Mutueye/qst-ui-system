@@ -83,7 +83,7 @@ export const generateResetStyles = (option: ThemeOption) => {
 
   let styleStr = `${cssReset ? normalizeStyles : ''}`;
   if (uiLibsList.includes('element-plus')) {
-    styleStr += overrideElementPlusStyles;
+    styleStr += overrideElementPlusStyles.replace('--el', namespace);
   } else {
     // TODO 更多UI组件库的定制样式
   }
