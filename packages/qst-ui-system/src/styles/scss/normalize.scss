@@ -30,8 +30,6 @@ q,
 samp,
 small,
 strong,
-sub,
-sup,
 var,
 b,
 i,
@@ -64,6 +62,15 @@ summary {
   padding: 0;
   margin: 0;
   vertical-align: baseline;
+  background: transparent;
+  border-style: solid;
+  border-width: 0;
+}
+
+sub,
+sup {
+  padding: 0;
+  margin: 0;
   background: transparent;
   border-style: solid;
   border-width: 0;
