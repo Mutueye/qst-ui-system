@@ -7,15 +7,6 @@ body div,
 span,
 object,
 iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
 abbr,
 address,
 cite,
@@ -71,6 +62,21 @@ sub,
 sup {
   padding: 0;
   margin: 0;
+  background: transparent;
+  border-style: solid;
+  border-width: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre {
+  vertical-align: baseline;
   background: transparent;
   border-style: solid;
   border-width: 0;
